@@ -6,10 +6,9 @@ def generate_random_numbers():
     return ''.join(str(random.randint(0, 9)) for _ in range(3))
 
 # Function to submit form data
-def submit_form(_token, firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation):
+def submit_form(firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation):
     url = 'https://10.alabbd.xyz/user/register'
     data = {
-        '_token': _token,
         'firstname': firstname,
         'lastname': lastname,
         'username': username,
@@ -48,7 +47,6 @@ def submit_form(_token, firstname, lastname, username, email, country, mobile_co
 
 # Main function
 def main():
-    _token = '41BkbD5fRpSyV5EPMu9I6m1C0w4l8gvw4wkBQ7Ej'
     firstname = 'Hacker'
     lastname = 'King'
     password = 'hacker@12345'
@@ -63,7 +61,7 @@ def main():
         username = f'hacker{generate_random_numbers()}'
         email = f'{username}p{generate_random_numbers()}@gmail.com'
             
-        submit_form(_token, firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation)
+        submit_form(firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation)
 
 if __name__ == "__main__":
     main()
