@@ -15,6 +15,9 @@ headers = {
 }
 
 response = requests.post(url, data=data, headers=headers)
-po = response.json()
-print(po)
+
+if 'session_key' in response:
+    print('Logged in successfully.')
+else:
+    print("Login failed.")
 
