@@ -26,13 +26,10 @@ def login_to_moneypluslife(id, password):
         response = session.post(login_url, data=form_data, headers=headers)
 
         # Check if the session cookie is set
-        if 'session' in session.cookies:
+        if 'PHPSESSID' in session.cookies:
             print("Login Successful!")
         else:
             print("Login Unsuccessful!")
-    
-        # Print the response content
-        print("Response content:", response.content)
             
 if __name__ == "__main__":
     # Replace 'your_id' and 'your_password' with the actual credentials
