@@ -15,15 +15,7 @@ def login_to_moneypluslife(id, password):
     with requests.Session() as session:
         # Send POST request to login
         response = session.post(login_url, data=form_data)
-        print("Response content:", response.content)
 
-if __name__ == "__main__":
-    # Replace 'your_id' and 'your_password' with the actual credentials
-    id = 'MPL2298238'
-    password = '9807298843'
-    login_to_moneypluslife(id, password)
-
-"""
         # Check if the session cookie is set
         if 'session' in session.cookies:
             print("Login Successful!")
