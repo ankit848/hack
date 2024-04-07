@@ -41,9 +41,10 @@ def main():
     uconpass = '1234567890'
 
     uname = 'Radhey Radhey'
-    umobile = '9812345678/' + generate_random_numbers()  # Moved the slash inside the string
-    random_numbers = generate_random_numbers()
-    uemail = f'dinesh{random_numbers}p{generate_random_numbers()}@gmail.com'
+    umobile = '9812345678' + generate_random_numbers()  # Moved the slash inside the string
+    umobile = int(umobile)  # Convert umobile back to an integer
+    umobile += int(generate_random_numbers())  # Add a random number to umobile
+    uemail = f'dinesh{generate_random_numbers()}p{generate_random_numbers()}@gmail.com'
         
     submit_form(usponsor, uname, umobile, uemail, upass, uconpass)
 
