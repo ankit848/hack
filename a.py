@@ -21,7 +21,8 @@ try:
     try:
         json_response = response.json()
         print(json_response)
-    except json.JSONDecodeError:
-        print("Response is not in JSON format:", response.text)
+    except json.JSONDecodeError as e:
+        print("Failed to decode JSON response:", e)
+        print("Response content:", response.content.decode())
 except requests.RequestException as e:
     print("An error occurred:", e)
