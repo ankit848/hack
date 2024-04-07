@@ -8,20 +8,14 @@ url = 'https://moneypluslife.info/panel/Authentic'
 data = {
     "u1": id,
     "p1": pas,
-    "1d2es5e8s":"",
+    "1d2es5e8s": "",  # Make sure this empty string is intentional
 }
 headers = {
-    ":authority":"moneypluslife.info",
-    "method":"POST",
-    ":path":"/panel/Authentic",
-    ":scheme":"https:",
-    "Accept-Encoding": "gzip, deflate,br",
+    "Accept-Encoding": "gzip, deflate, br",
     "Accept": "*/*",
-    "Content-Length":"25",
-    "Origin":"https://moneyplus.info",
-    "Referer":"https://moneypluslife.info/panel/login",
+    "Origin": "https://moneyplus.info",
+    "Referer": "https://moneypluslife.info/panel/login",  # Corrected referer URL
     "User-Agent": "Mozilla/5.0 (Linux; Android 10; CLT-L29 Build/HUAWEICLT-L29; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/110.0.5481.153 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/405.0.0.23.72;]",
-    
 }
 
 try:
