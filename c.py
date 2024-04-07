@@ -31,7 +31,7 @@ def submit_form(firstname, lastname, username, email, country, mobile_code, coun
     if not _token:
         print("Token retrieval failed. Aborting form submission.")
         return
-    
+
     url = 'https://10.alabbd.xyz/user/register'
     data = {
         '_token': _token,
