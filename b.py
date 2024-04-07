@@ -40,13 +40,14 @@ def main():
     upass = '1234567890'
     uconpass = '1234567890'
 
-    uname = 'Radhey Radhey'
-    umobile = '9800005678'
-    umobile = int(umobile)  # Convert umobile back to an integer
-    umobile += random.randint(100, 999)  # Add a random 3-digit number to umobile
-    uemail = f'dinesh{generate_random_numbers()}p{generate_random_numbers()}@gmail.com'
-        
-    submit_form(usponsor, uname, umobile, uemail, upass, uconpass)
+    for _ in range(3):  # Loop 3 times
+        uname = 'Radhey Radhey'
+        umobile = '9800005678'
+        umobile = int(umobile)  # Convert umobile back to an integer
+        umobile += random.randint(100, 999)  # Add a random 3-digit number to umobile
+        uemail = f'dinesh{generate_random_numbers()}p{generate_random_numbers()}@gmail.com'
+            
+        submit_form(usponsor, uname, umobile, uemail, upass, uconpass)
 
 if __name__ == "__main__":
     main()
