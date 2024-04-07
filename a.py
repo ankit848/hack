@@ -19,12 +19,10 @@ def login_to_moneypluslife(id, password):
         # Check if the session cookie is set
         if 'session' in session.cookies:
             print("Login Successful!")
-            # Print the response content
-            print("Response content:", response.content)
+    
         else:
             print("Login Unsuccessful!")
-             print("Response content:", response.content)
-"""
+            
 if __name__ == "__main__":
     # Replace 'your_id' and 'your_password' with the actual credentials
     id = 'MPL2298238'
