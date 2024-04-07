@@ -34,7 +34,7 @@ def main():
 
     for proxy in proxies:
         visit_url_with_proxy(url, proxy)
-        time.sleep(1)  # Wait for 1 second before visiting the next proxy
+        time.sleep(0.001)  # Wait for 1 second before visiting the next proxy
 
 if __name__ == "__main__":
     main()
