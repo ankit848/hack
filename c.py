@@ -29,14 +29,9 @@ def get_token():
     except requests.exceptions.RequestException as e:
         print(f"Failed to get token: {e}")
         return None
-
+_token = get_token()
 # Function to submit form data
-def submit_form(firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation):
-    _token = get_token()
-    print(_token)
-    if not _token:
-        print("Token retrieval failed. Aborting form submission.")
-        return
+def submit_form(_token,firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation):
 
     url = 'https://10.alabbd.xyz/user/register'
     data = {
@@ -53,11 +48,14 @@ def submit_form(firstname, lastname, username, email, country, mobile_code, coun
         'country_code': country_code
     }
     headers = {
-        "Accept-Encoding": "gzip, deflate, br",
+       "Accept-Encoding": "gzip, deflate, br",
         "Accept": "*/*",
-        "Origin": "https://10.alabbd.xyz/",
+        "Host":"10.alabbd.xyz",
+        "Referer":"https://10.alabbd.xyz/user/login",
+        "Sec-Fetch-User":"1",
+        "Upgrade-Insecure-Requests":"1",
         "User-Agent": "Mozilla/5.0 (Linux; Android 10; CLT-L29 Build/HUAWEICLT-L29; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/110.0.5481.153 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/405.0.0.23.72;]",
-    }
+   }
     try:
         response = requests.post(url, data=data, headers=headers)
         response.raise_for_status()  # Raise an exception for non-2xx status codes
@@ -93,7 +91,7 @@ def main():
         username = f'hacker{generate_random_numbers()}'
         email = f'{username}p{generate_random_numbers()}@gmail.com'
         
-        submit_form(firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation)
+        submit_form(_token, firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation)
 
 if __name__ == "__main__":
     main()
