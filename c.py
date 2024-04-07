@@ -12,6 +12,10 @@ def get_token():
     headers = {
         "Accept-Encoding": "gzip, deflate, br",
         "Accept": "*/*",
+        "Host":"10.alabbd.xyz",
+        "Referer":"https://10.alabbd.xyz/user/login",
+        "Sec-Fetch-User":"1",
+        "Upgrade-Insecure-Requests":"1",
         "User-Agent": "Mozilla/5.0 (Linux; Android 10; CLT-L29 Build/HUAWEICLT-L29; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/110.0.5481.153 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/405.0.0.23.72;]",
     }
     try:
