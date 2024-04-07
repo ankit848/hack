@@ -20,7 +20,7 @@ headers = {
 
 try:
     response = session.post(url, data=data, headers=headers).json()
-    print(response")
+    print("response")
     """
     response.raise_for_status()  # Raise an exception for bad status codes (4xx or 5xx)
     try:
