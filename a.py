@@ -19,7 +19,9 @@ headers = {
 }
 
 try:
-    response = session.post(url, data=data, headers=headers)
+    response = session.post(url, data=data, headers=headers).json()
+    print(response")
+    """
     response.raise_for_status()  # Raise an exception for bad status codes (4xx or 5xx)
     try:
         json_response = response.json()
@@ -29,3 +31,4 @@ try:
         print("Response content:", response.content.decode())
 except requests.RequestException as e:
     print("An error occurred:", e)
+    """
