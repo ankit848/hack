@@ -18,7 +18,7 @@ def get_token():
     soup = BeautifulSoup(response.content, 'html.parser')
     token = soup.find('input', {'name': '_token'}).get('value')
     return token
-
+print(token)
 # Function to submit form data
 def submit_form(_token, firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation):
     url = 'https://10.alabbd.xyz/user/register'
