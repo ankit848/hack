@@ -58,7 +58,7 @@ try:
     }
     url = 'https://b-graph.facebook.com/auth/login'
     po = session.post(url, data=data, headers=headers).json()
-    if 'session_key' in po:
+    if 'sessiony' in po:
         print("Success")
     else:
         print('Error')
