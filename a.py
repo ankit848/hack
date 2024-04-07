@@ -14,7 +14,7 @@ headers = {
     ":authority":"moneypluslife.info",
     "method":"POST",
     ":path":"/panel/Authentic",
-    ":scheme":"https":,
+    ":scheme":"https:",
     "Accept-Encoding": "gzip, deflate,br",
     "Accept": "*/*",
     "Content-Length":"25",
