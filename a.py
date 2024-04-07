@@ -1,6 +1,4 @@
-import requests
-import json
-
+import requests, json
 session = requests.Session()
 id = "MPL2298238"
 pas = "9807298843"
