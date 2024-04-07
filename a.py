@@ -8,7 +8,7 @@ import string  # Add import for string module
 
 session = requests.Session()
 uid = "shresthaankit444@gmail.com"
-ps = "rakesh@1"
+ps = "rakesh12@"
 
 def one():
     ua = 'Dalvik/2.1.0 (Linux; U; Android 11; SM-G986U Build/RP1A.200720.012) [FBAN/Orca-Android;FBAV/316.4.0.15.120;FBPN/com.facebook.orca;FBLC/en_US;FBBV/297403762;FBCR/Verizon ;FBMF/samsung;FBBD/samsung;FBDV/SM-G986U;FBSV/11;FBCA/arm64-v8a:null;FBDM/{density=2.625,width=1080,height=2201};FB_FW/1;]'
