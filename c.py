@@ -20,8 +20,7 @@ def get_token():
     return token
 
 # Function to submit form data
-def submit_form(_token,firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation):
-    _token = get_token()
+def submit_form(_token, firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation):
     url = 'https://10.alabbd.xyz/user/register'
     data = {
         '_token': _token,
@@ -47,7 +46,6 @@ def submit_form(_token,firstname, lastname, username, email, country, mobile_cod
         response.raise_for_status()  # Raise an exception for non-2xx status codes
         print("Form submitted successfully.")
         print("Submitted Data:")
-        print(f"Token: {_token}")
         print(f"First Name: {firstname}")
         print(f"Last Name: {lastname}")
         print(f"Username: {username}")
@@ -77,8 +75,9 @@ def main():
         mobile = int(mobile_base) + random.randint(1000, 9999)  # Add a random 4-digit number to mobile_base
         username = f'hacker{generate_random_numbers()}'
         email = f'{username}p{generate_random_numbers()}@gmail.com'
-            
-        submit_form(_token,firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation)
+        
+        _token = get_token()
+        submit_form(_token, firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation)
 
 if __name__ == "__main__":
     main()
