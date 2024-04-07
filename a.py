@@ -15,7 +15,7 @@ headers = {
 }
 
 response = requests.post(url, data=data, headers=headers)
-
+print(response)
 if 'session_key' in response:
     print('Logged in successfully.')
 else:
