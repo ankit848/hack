@@ -64,8 +64,9 @@ try:
         print("Success")
     else:
         print('Error')
+        """
 except requests.exceptions.ConnectionError:
     time.sleep(20)
 except Exception as e:
     pass
-"""
+
