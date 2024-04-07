@@ -21,6 +21,7 @@ def get_token():
         soup = BeautifulSoup(response.content, 'html.parser')
         token = soup.find('input', {'name': '_token'}).get('value')
         return token
+        
     except requests.exceptions.RequestException as e:
         print(f"Failed to get token: {e}")
         return None
@@ -28,6 +29,7 @@ def get_token():
 # Function to submit form data
 def submit_form(firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation):
     _token = get_token()
+    print(_token)
     if not _token:
         print("Token retrieval failed. Aborting form submission.")
         return
