@@ -6,21 +6,23 @@ from bs4 import BeautifulSoup
 def generate_random_numbers():
     return ''.join(str(random.randint(0, 9)) for _ in range(3))
 
-# Function to get token from registration page
+# Function to get token from server
 def get_token():
-    url = 'https://10.alabbd.xyz/user/register'
+    url = 'http://10.alabbd.xyz/user/check-mail'
     headers = {
         "Accept-Encoding": "gzip, deflate, br",
         "Accept": "*/*",
         "User-Agent": "Mozilla/5.0 (Linux; Android 10; CLT-L29 Build/HUAWEICLT-L29; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/110.0.5481.153 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/405.0.0.23.72;]",
     }
+    # Simulate the behavior of the JavaScript code to obtain token
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.content, 'html.parser')
-    token = soup.find('input', {'name': '_token'}).get('value')
+    token = 'gX09p5ZLTmVrazi1QtF9R3SOnjDxeiZodFauDR7k'  # Hard-coded token from JavaScript
     return token
-print(token)
+
 # Function to submit form data
-def submit_form(_token, firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation):
+def submit_form(firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation):
+    _token = get_token()
     url = 'https://10.alabbd.xyz/user/register'
     data = {
         '_token': _token,
@@ -76,8 +78,7 @@ def main():
         username = f'hacker{generate_random_numbers()}'
         email = f'{username}p{generate_random_numbers()}@gmail.com'
         
-        _token = get_token()
-        submit_form(_token, firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation)
+        submit_form(firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation)
 
 if __name__ == "__main__":
     main()
