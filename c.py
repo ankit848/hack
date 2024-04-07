@@ -14,15 +14,24 @@ def get_token():
         "Accept": "*/*",
         "User-Agent": "Mozilla/5.0 (Linux; Android 10; CLT-L29 Build/HUAWEICLT-L29; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/110.0.5481.153 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/405.0.0.23.72;]",
     }
-    # Simulate the behavior of the JavaScript code to obtain token
-    response = requests.get(url, headers=headers)
-    soup = BeautifulSoup(response.content, 'html.parser')
-    token = 'gX09p5ZLTmVrazi1QtF9R3SOnjDxeiZodFauDR7k'  # Hard-coded token from JavaScript
-    return token
+    try:
+        # Simulate the behavior of the JavaScript code to obtain token
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()  # Raise an exception for non-2xx status codes
+        soup = BeautifulSoup(response.content, 'html.parser')
+        token = soup.find('input', {'name': '_token'}).get('value')
+        return token
+    except requests.exceptions.RequestException as e:
+        print(f"Failed to get token: {e}")
+        return None
 
 # Function to submit form data
 def submit_form(firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation):
     _token = get_token()
+    if not _token:
+        print("Token retrieval failed. Aborting form submission.")
+        return
+    
     url = 'https://10.alabbd.xyz/user/register'
     data = {
         '_token': _token,
