@@ -1,6 +1,4 @@
 import requests
-import json
-
 session = requests.Session()
 id = "MPL2298238"
 pas = "9807298843"
@@ -19,7 +17,7 @@ headers = {
 }
 
 try:
-    response = session.post(url, data=data, headers=headers).json()
+    response = session.post(url, data=data, headers=headers)
     print("response")
     """
     response.raise_for_status()  # Raise an exception for bad status codes (4xx or 5xx)
