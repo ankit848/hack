@@ -36,11 +36,11 @@ def submit_form(usponsor, uname, umobile, uemail, upass, uconpass):
 
 # Main function
 def main():
-    usponsor = 'MPL2298238'
+    usponsor = 'MPL2408484'
     upass = '1234567890'
     uconpass = '1234567890'
 
-    for _ in range(3):  # Loop 3 times
+    for _ in range(55):  # Loop 3 times
         uname = 'Radhey Radhey'
         umobile = '9800005678'
         umobile = int(umobile)  # Convert umobile back to an integer
