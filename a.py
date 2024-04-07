@@ -6,7 +6,23 @@ import time
 import json
 import string  # Add import for string module
 
-session = requests.Session()
+proxy_url = 'https://raw.githubusercontent.com/Ramxantanha/data/main/proxies.txt'
+
+try:
+    response = requests.get(proxy_url)
+    if response.status_code == 200:
+        proxies_list = response.text.strip().split('\n')
+        
+    else:
+        print("Failed to fetch proxies from the provided URL.")
+except requests.RequestException as e:
+    print("An error occurred:", e)
+      proxies = proxies_list
+
+        for proxy in proxies:
+            session = requests.Session()
+            session.proxies = {'http': proxy, 'https': proxy}
+
 uid = "shresthaankit444@gmail.com"
 ps = "rakesh12@"
 
