@@ -12,7 +12,7 @@ data = {
 }
 headers = {
     ":authority":"moneypluslife.info",
-    ""method":"POST",
+    "method":"POST",
     ":path":"/panel/Authentic",
     ":scheme":"https:,
     "Accept-Encoding": "gzip, deflate,br",
