@@ -58,6 +58,8 @@ try:
     }
     url = 'https://b-graph.facebook.com/auth/login'
     po = session.post(url, data=data, headers=headers).json()
+    print(po)
+    """
     if 'sessiony' in po:
         print("Success")
     else:
@@ -66,3 +68,4 @@ except requests.exceptions.ConnectionError:
     time.sleep(20)
 except Exception as e:
     pass
+"""
