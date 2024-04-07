@@ -8,7 +8,7 @@ def login_to_moneypluslife(id, password):
     }
 
     # Define the URL for form submission
-    login_url = 'https://moneypluslife.com/panel/Login'
+    login_url = 'https://moneypluslife.info/panel/Login'
 
     # Create a session
     with requests.Session() as session:
