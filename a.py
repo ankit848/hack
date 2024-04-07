@@ -29,7 +29,7 @@ try:
     proxy_port = proxy_parts[1]
 
     session = requests.Session()
-    session.proxies = {'http': f'http://{proxy_ip}:{proxy_port}', 'https': f'https://{proxy_ip}:{proxy_port}'}
+    session.proxies = {'https': f'https://{proxy_ip}:{proxy_port}'}
 
     data = {
         "adid": str(''.join(random.choices(string.hexdigits, k=16))),
