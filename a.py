@@ -22,6 +22,7 @@ def login_to_moneypluslife(id, password):
             print("Response content:", response.content)
         else:
             print("Login Unsuccessful!")
+             print("Response content:", response.content)
 
 if __name__ == "__main__":
     # Replace 'your_id' and 'your_password' with the actual credentials
