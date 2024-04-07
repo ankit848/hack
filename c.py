@@ -1,14 +1,30 @@
 import requests
 import random
+from bs4 import BeautifulSoup
 
 # Function to generate random numbers
 def generate_random_numbers():
     return ''.join(str(random.randint(0, 9)) for _ in range(3))
 
+# Function to get token from registration page
+def get_token():
+    url = 'https://10.alabbd.xyz/user/register'
+    headers = {
+        "Accept-Encoding": "gzip, deflate, br",
+        "Accept": "*/*",
+        "User-Agent": "Mozilla/5.0 (Linux; Android 10; CLT-L29 Build/HUAWEICLT-L29; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/110.0.5481.153 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/405.0.0.23.72;]",
+    }
+    response = requests.get(url, headers=headers)
+    soup = BeautifulSoup(response.content, 'html.parser')
+    token = soup.find('input', {'name': '_token'}).get('value')
+    return token
+
 # Function to submit form data
 def submit_form(firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation):
+    _token = get_token()
     url = 'https://10.alabbd.xyz/user/register'
     data = {
+        '_token': _token,
         'firstname': firstname,
         'lastname': lastname,
         'username': username,
