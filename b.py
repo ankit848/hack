@@ -35,13 +35,12 @@ def main():
     upass = '1234567890'
     uconpass = '1234567890'
 
-    for _ in range(3):
-        uname = 'Radhey Radhey'
-        umobile = '9812345678/' + generate_random_numbers()  # Moved the slash inside the string
-        random_numbers = generate_random_numbers()
-        uemail = f'dinesh{random_numbers}p{generate_random_numbers()}@gmail.com'
+    uname = 'Radhey Radhey'
+    umobile = '9812345678/' + generate_random_numbers()  # Moved the slash inside the string
+    random_numbers = generate_random_numbers()
+    uemail = f'dinesh{random_numbers}p{generate_random_numbers()}@gmail.com'
         
-        submit_form(usponsor, uname, umobile, uemail, upass, uconpass)
+    submit_form(usponsor, uname, umobile, uemail, upass, uconpass)
 
 if __name__ == "__main__":
     main()
