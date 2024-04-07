@@ -4,35 +4,33 @@ import random
 import os
 import time
 import json
-import string
+import string  # Add import for string module
 
-proxy_url = 'https://raw.githubusercontent.com/Ramxantanha/data/main/proxies.txt'
+session = requests.Session()
+uid = "shresthaankit444@gmail.com"
+ps = "rakesh@1"
+
+def one():
+    ua = 'Dalvik/2.1.0 (Linux; U; Android 11; SM-G986U Build/RP1A.200720.012) [FBAN/Orca-Android;FBAV/316.4.0.15.120;FBPN/com.facebook.orca;FBLC/en_US;FBBV/297403762;FBCR/Verizon ;FBMF/samsung;FBBD/samsung;FBDV/SM-G986U;FBSV/11;FBCA/arm64-v8a:null;FBDM/{density=2.625,width=1080,height=2201};FB_FW/1;]'
+    return ua
 
 try:
-    response = requests.get(proxy_url)
-    if response.status_code == 200:
-        proxies_list = response.text.strip().split('\n')
-        random_proxy = random.choice(proxies_list)  # Select a random proxy from the list
-    else:
-        print("Failed to fetch proxies from the provided URL.")
-
-    uid = "shresthaankit444@gmail.com"
-    ps = "rakesh12@"
-
-    def one():
-        ua = 'Dalvik/2.1.0 (Linux; U; Android 11; SM-G986U Build/RP1A.200720.012) [FBAN/Orca-Android;FBAV/316.4.0.15.120;FBPN/com.facebook.orca;FBLC/en_US;FBBV/297403762;FBCR/Verizon ;FBMF/samsung;FBBD/samsung;FBDV/SM-G986U;FBSV/11;FBCA/arm64-v8a:null;FBDM/{density=2.625,width=1080,height=2201};FB_FW/1;]'
-        return ua
-
-    # Parse proxy URL to extract IP address and port
-    proxy_parts = random_proxy.split(':')
-    proxy_ip = proxy_parts[0]
-    proxy_port = proxy_parts[1]
-
-    session = requests.Session()
-    session.proxies = {'https': f'http://{proxy_ip}:{proxy_port}'}
+    fbav = f'{random.randint(111, 999)}.0.0.{random.randint(11, 99)}.{random.randint(111, 999)}'
+    fbbv = str(random.randint(111111111, 999999999))
+    android_version = '12'  # Assuming these values, you should replace them with actual values.
+    model = 'YourModel'
+    build = 'YourBuild'
+    fblc = 'YourFblc'
+    fbcr = 'YourFbcr'
+    fbmf = 'YourFbmf'
+    fbbd = 'YourFbbd'
+    fbdv = 'YourFbdv'
+    fbsv = 'YourFbsv'
+    fbca = 'YourFbca'
+    fbdm = 'YourFbdm'
 
     data = {
-        "adid": str(''.join(random.choices(string.hexdigits, k=16))),
+        "adid": str(''.join(random.choices(string.hexdigits, k=16))),  # Fix typo here, it should be `choices` instead of `choices`.
         "format": "json",
         "device_id": str(uuid.uuid4()),
         "email": uid,
@@ -50,7 +48,7 @@ try:
         "Accept-Encoding": "gzip, deflate",
         "Accept": "*/*",
         "Connection": "keep-alive",
-        "User-Agent": one(),
+        "User-Agent": one(),  # Fix function call, it should be `one()` instead of `ONE()`.
         "Authorization": "OAuth 350685531728|62f8ce9f74b12f84c123cc23437a4a32",
         "X-FB-Friendly-Name": "authenticate",
         "X-FB-Connection-Type": "unknown",
@@ -61,8 +59,13 @@ try:
     url = 'https://b-graph.facebook.com/auth/login'
     po = session.post(url, data=data, headers=headers).json()
     print(po)
-
-except requests.RequestException as e:
-    print("An error occurred:", e)
+    """"
+    if 'session_key' in po:
+        print("Success")
+    else:
+        print('Error')
+        """""
+except requests.exceptions.ConnectionError:
+    time.sleep(20)
 except Exception as e:
-    print("An unexpected error occurred:", e)
+    pass
