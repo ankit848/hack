@@ -7,7 +7,7 @@ def generate_random_numbers():
 
 # Function to submit form data
 def submit_form(usponsor, uname, umobile, uemail, upass, uconpass):
-    url = 'https://moneypluslife.info/panel/RegisterProcess'  # Replace with the actual URL
+    url = 'https://moneypluslife.info/panel/RegisterProcess'
     data = {
         'usponsor': usponsor,
         'uname': uname,
@@ -16,18 +16,11 @@ def submit_form(usponsor, uname, umobile, uemail, upass, uconpass):
         'upass': upass,
         'uconpass': uconpass
     }
-    with requests.Session() as session:
-        response = session.post(url, data=data)
-        # Check if the session is active
-        if 'session' in session.cookies:
-            print("Form submission successful.")
-            # Get the redirected URL after successful form submission
-            redirect_url = response.url
-            # Assuming the user ID is present in the redirected URL
-            user_id = redirect_url.split('/')[-1]
-            print("User ID:", user_id)
-        else:
-            print("Form submission unsuccessful.")
+    response = requests.post(url, data=data)
+    if response.status_code == 200:
+        print("Form submitted successfully.")
+    else:
+        print("Form submission failed.")
 
 # Main function
 def main():
