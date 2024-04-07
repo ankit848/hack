@@ -8,7 +8,7 @@ def generate_random_numbers():
 
 # Function to get token from server
 def get_token():
-    url = 'http://10.alabbd.xyz/user/check-mail'
+    url = 'https://10.alabbd.xyz/user/register'
     headers = {
         "Accept-Encoding": "gzip, deflate, br",
         "Accept": "*/*",
