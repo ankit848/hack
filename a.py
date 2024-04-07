@@ -2,7 +2,7 @@ import requests
 session = requests.Session()
 id = "MPL2298238"
 pas = "980720098843"
-url = 'https://moneypluslife.info/panel/Login'
+url = 'https://moneypluslife.info/panel/Authentic'
 data = {
     "u1": id,
     "p1": pas
