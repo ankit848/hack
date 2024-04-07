@@ -2,7 +2,7 @@ import requests
 
 id = "1010201"
 pas = "pppos"
-url = 'https://moneypluslife.info/panel/Authentic'
+url = 'https://moneypluslife.info/panel/Login'
 data = {
     "u1": id,
     "p1": pas
