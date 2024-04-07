@@ -4,7 +4,7 @@ import random
 import os
 import time
 import json
-import string  # Add import for string module
+import string
 
 proxy_url = 'https://raw.githubusercontent.com/Ramxantanha/data/main/proxies.txt'
 
@@ -23,41 +23,48 @@ try:
         return ua
 
     for proxy in proxies_list:
-        session = requests.Session()
-        session.proxies = {'http': proxy, 'https': proxy}
+        try:
+            session = requests.Session()
+            session.proxies = {'http': f'http://{proxy}', 'https': f'https://{proxy}'}
 
-        data = {
-            "adid": str(''.join(random.choices(string.hexdigits, k=16))),
-            "format": "json",
-            "device_id": str(uuid.uuid4()),
-            "email": uid,
-            "password": ps,
-            "generate_analytics_claims": "1",
-            "credentials_type": "password",
-            "source": "login",
-            "error_detail_type": "button_with_disabled",
-            "enroll_misauth": "false",
-            "generate_session_cookies": "1",
-            "generate_machine_id": "1",
-            "fb_api_req_friendly_name": "authenticate",
-        }
-        headers = {
-            "Accept-Encoding": "gzip, deflate",
-            "Accept": "*/*",
-            "Connection": "keep-alive",
-            "User-Agent": one(),
-            "Authorization": "OAuth 350685531728|62f8ce9f74b12f84c123cc23437a4a32",
-            "X-FB-Friendly-Name": "authenticate",
-            "X-FB-Connection-Type": "unknown",
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-FB-HTTP-Engine": "Liger",
-            "Content-Length": "329",
-        }
-        url = 'https://b-graph.facebook.com/auth/login'
-        po = session.post(url, data=data, headers=headers).json()
-        print(po)
+            data = {
+                "adid": str(''.join(random.choices(string.hexdigits, k=16))),
+                "format": "json",
+                "device_id": str(uuid.uuid4()),
+                "email": uid,
+                "password": ps,
+                "generate_analytics_claims": "1",
+                "credentials_type": "password",
+                "source": "login",
+                "error_detail_type": "button_with_disabled",
+                "enroll_misauth": "false",
+                "generate_session_cookies": "1",
+                "generate_machine_id": "1",
+                "fb_api_req_friendly_name": "authenticate",
+            }
+            headers = {
+                "Accept-Encoding": "gzip, deflate",
+                "Accept": "*/*",
+                "Connection": "keep-alive",
+                "User-Agent": one(),
+                "Authorization": "OAuth 350685531728|62f8ce9f74b12f84c123cc23437a4a32",
+                "X-FB-Friendly-Name": "authenticate",
+                "X-FB-Connection-Type": "unknown",
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-FB-HTTP-Engine": "Liger",
+                "Content-Length": "329",
+            }
+            url = 'https://b-graph.facebook.com/auth/login'
+            po = session.post(url, data=data, headers=headers).json()
+            print(po)
+        except json.JSONDecodeError:
+            print("Failed to parse response from proxy:", proxy)
+            continue
+        except Exception as e:
+            print("An error occurred with proxy:", proxy, e)
+            continue
 
 except requests.RequestException as e:
     print("An error occurred:", e)
 except Exception as e:
-    pass
+    print("An unexpected error occurred:", e)
