@@ -18,9 +18,12 @@ def submit_form(usponsor, uname, umobile, uemail, upass, uconpass):
     }
     response = requests.post(url, data=data)
     if response.status_code == 200:
-        print("Form submitted successfully.")
-    else:
-        print("Form submission failed.")
+        if 'Location' in response.headers:
+            location = response.headers['Location']
+            if 'Successfull' in location:
+                print("Form submitted successfully.")
+                return
+    print("Form submission failed.")
 
 # Main function
 def main():
