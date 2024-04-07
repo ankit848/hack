@@ -14,9 +14,12 @@ headers = {
 }
 
 response = requests.post(url, data=data, headers=headers)
+so=response.json()
+print(so)
+"""
 print(response)
 if 'PHPSESSID' in response:
     print('Logged in successfully.')
 else:
     print("Login failed.")
-
+"""
