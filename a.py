@@ -29,6 +29,7 @@ try:
     except json.JSONDecodeError as e:
         print("Failed to decode JSON response:", e)
         print("Response content:", response.content.decode())
+           """
 except requests.RequestException as e:
     print("An error occurred:", e)
-    """
+ 
