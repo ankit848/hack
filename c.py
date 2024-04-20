@@ -54,7 +54,7 @@ def submit_form(_token, area_code, username, email, password, password_confirmat
 def main():
     password = 'hacker@12345'
     password_confirmation = 'hacker@12345'
-    mobile_code = '+977'
+   area_code = '+977'
 
     for _ in range(2):  # Loop 2 times
         mobile_base = '9800005678'
