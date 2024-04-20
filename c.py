@@ -56,7 +56,7 @@ def main():
     password_confirmation = 'hacker@12345'
     area_code = '+977'  # Define area_code within the main function
 
-    for _ in range(1):  # Loop 2 times
+    for _ in range(3):  # Loop 2 times
         mobile_base = '9810005678'
         mobile = int(mobile_base) + random.randint(1000, 9999)  # Add a random 4-digit number to mobile_base
         username = f'hackers{generate_random_numbers()}'
