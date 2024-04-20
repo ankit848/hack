@@ -23,23 +23,17 @@ def get_token():
     }
 
     try:
-        # Simulate the behavior of the JavaScript code to obtain token
-        response = requests.get(url, headers=headers)
+         response = requests.get(url, headers=headers)
         response.raise_for_status()  # Raise an exception for non-2xx status codes
         soup = BeautifulSoup(response.content, 'html.parser')
-token_element = soup.find('input', {'name': '_token'})
-if token_element:
-    token = token_element.get('value')
+        token = soup.find('input', {'name': '_token'}).get('value')
+if token:
     print("Token obtained:", token)
     return token
 else:
     print("Token element not found.")
     return None
 
-    
-    except requests.exceptions.RequestException as e:
-        print(f"Failed to get token: {e}")
-        return None
 
 # Function to submit form data
 def submit_form(token, username, email, password, password_confirmation, area_code):
