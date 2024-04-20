@@ -71,19 +71,22 @@ def submit_form(_token, areacode, username, email, password, password_confirmati
         print(f"Form submission failed: {e}")
 
 # Main function
+import random
+
 def main():
     password = 'hacker@12345'
     password_confirmation = 'hacker@12345'
     mobile_code = '+977'
     user = 'raamamm'
- _token = get_token()
-
+    _token = get_token()  # Corrected indentation
+    
     for _ in range(2):  # Loop 2 times
         mobile_base = '9800005678'
         username = int(mobile_base) + random.randint(1000, 9999)  # Add a random 4-digit number to mobile_base
         email = f'{user}p{generate_random_numbers()}@gmail.com'
         
-        submit_form(_token,areacode, username, email, password, password_confirmation)
+        # Assuming areacode is a parameter, it needs to be passed in
+        submit_form(_token, mobile_code, username, email, password, password_confirmation, country=None, mobile_code=None)
 
 if __name__ == "__main__":
     main()
