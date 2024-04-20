@@ -10,7 +10,7 @@ def generate_random_numbers():
 def get_token():
     url = 'https://loyality-one.site/user/register'
     headers = {
-        "Accept-Encoding": "gzip, deflate, br",
+ "Accept-Encoding": "gzip, deflate, br",
         "Accept": "*/*",
         "Host":"loyality-one.site",
         "Referer":"https://loyality-one.site/user/login",
@@ -22,22 +22,28 @@ def get_token():
         "User-Agent": "Mozilla/5.0 (Linux; Android 10; CLT-L29 Build/HUAWEICLT-L29; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/110.0.5481.153 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/405.0.0.23.72;]",
     }
     try:
-        # Simulate the behavior of the JavaScript code to obtain token
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()  # Raise an exception for non-2xx status codes
-        soup = BeautifulSoup(response.content, 'html.parser')
-        token = soup.find('input', {'name': '_token'}).get('value')
-        return token
+        with requests.Session() as session:
+            response = session.get(url, headers=headers)
+            response.raise_for_status()  # Raise an exception for non-2xx status codes
+            soup = BeautifulSoup(response.content, 'html.parser')
+            token = soup.find('input', {'name': '_token'}).get('value')
+            return token
         
     except requests.exceptions.RequestException as e:
         print(f"Failed to get token: {e}")
         return None
+
+token = get_token()
+if token:
+    print("Token obtained successfully:", token)
+else:
+    print("Failed to obtain token.")
 # Function to submit form data
 def submit_form(_token,area_code, username, email, password, password_confirmation):
 
   url = 'https://loyality-one.site/user/register'
     data = {
-        '_token': _token,
+        '_token': token,
         'username': mobile,
         'email': email,
         'password': password,
@@ -76,7 +82,6 @@ def main():
     password = 'hacker@12345'
     password_confirmation = 'hacker@12345'
     mobile_code = '+977'
- _token = get_token()
 
     for _ in range(2):  # Loop 2 times
         mobile_base = '9800005678'
