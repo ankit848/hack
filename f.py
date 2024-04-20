@@ -24,12 +24,6 @@ def get_token():
         print(f"Failed to get token: {e}")
         return None, None
 
-_token, session = get_token()
-if _token:
-    print("Token obtained successfully:", _token)
-else:
-    print("Failed to obtain token.")
-
 def submit_form(_token, session, area_code, mobile, email, password, password_confirmation):
     url = 'https://loyality-one.site/user/register'
   
@@ -48,10 +42,9 @@ def submit_form(_token, session, area_code, mobile, email, password, password_co
 
     try:
         response = session.post(url, data=data, headers=headers)
-        print(mobile)
-        print(response.url)
         if 'https://loyality-one.site/user/dashboard' in response.url:
             print("Form submitted successfully.")
+            session.close()  # Close the session after successful submission
         else:
             print("Form submission failed.")
     except Exception as e:
@@ -62,7 +55,14 @@ def main():
     password_confirmation = 'hacker@12345'
     area_code = '+977'  # Define area_code within the main function
 
-    for _ in range(3):  # Loop 2 times
+    _token, session = get_token()
+    if _token:
+        print("Token obtained successfully:", _token)
+    else:
+        print("Failed to obtain token.")
+        return
+
+    for _ in range(3):  # Loop 3 times
         mobile_base = '9810005678'
         mobile = int(mobile_base) + random.randint(1000, 9999)  # Add a random 4-digit number to mobile_base
         usernames = f'hackers{generate_random_numbers()}'
