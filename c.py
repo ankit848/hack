@@ -27,10 +27,16 @@ def get_token():
         response = requests.get(url, headers=headers)
         response.raise_for_status()  # Raise an exception for non-2xx status codes
         soup = BeautifulSoup(response.content, 'html.parser')
-        token = soup.find('input', {'name': '_token'}).post('value')
-        print("Token obtained:", token)  # Print the token obtained
-        return token
-        
+token_element = soup.find('input', {'name': '_token'})
+if token_element:
+    token = token_element.get('value')
+    print("Token obtained:", token)
+    return token
+else:
+    print("Token element not found.")
+    return None
+
+    
     except requests.exceptions.RequestException as e:
         print(f"Failed to get token: {e}")
         return None
