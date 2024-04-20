@@ -27,7 +27,7 @@ def get_token():
         response = requests.get(url, headers=headers)
         response.raise_for_status()  # Raise an exception for non-2xx status codes
         soup = BeautifulSoup(response.content, 'html.parser')
-        token = soup.find('input', {'name': '_token'}).get('value')
+        token = soup.find('input', {'name': '_token'}).post('value')
         print("Token obtained:", token)  # Print the token obtained
         return token
         
