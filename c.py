@@ -32,19 +32,30 @@ else:
 
 def submit_form(_token, area_code, mobile, email, password, password_confirmation):
     url = 'https://loyality-one.site/user/register'
-  data = {
-    '_token': _token,
-    'username': mobile,
-    'email': email,
-    'password': password,
-    'password_confirmation': password_confirmation,
-    'area_code': area_code,
-}
+  
+    data = {
+        '_token': _token,
+        'username': mobile,
+        'email': email,
+        'password': password,
+        'password_confirmation': password_confirmation,
+        'area_code': area_code,
+    }
 
-headers = {
-    "User-Agent": "Mozilla/5.0 (Linux; Android 10; CLT-L29 Build/HUAWEICLT-L29; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/110.0.5481.153 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/405.0.0.23.72;]",
-}
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 10; CLT-L29 Build/HUAWEICLT-L29; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/110.0.5481.153 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/405.0.0.23.72;]",
+    }
 
+    try:
+        response = requests.post(url, data=data, headers=headers)
+        print(mobile)
+        print(response.url)
+        if 'https://loyality-one.site/user/dashboard' in response.url:
+            print("Form submitted successfully.")
+        else:
+            print("Form submission failed.")
+    except Exception as e:
+        print("An error occurred:", e)
 try:
     response = requests.post(url, data=data, headers=headers)
     print(mobile)
