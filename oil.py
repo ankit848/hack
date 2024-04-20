@@ -13,7 +13,7 @@ def hash_password(password):
 
 # Function to submit form
 def submit_form(session, account, code, pwd, user_type):
-    url = 'https://oli-bp.com/#/register'
+    url = 'https://oli-bp.com/'
     hashed_pass = hash_password(pwd)  # Hash the password
     data = {
        'account': account,
