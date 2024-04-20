@@ -38,7 +38,7 @@ def submit_form(_token,areacode, username, email, password, password_confirmatio
   url = 'https://loyality-one.site/user/register'
     data = {
         '_token': _token,
-        'username': mobile,
+        'username': username,
         'email': email,
         'password': password,
         'password_confirmation': password_confirmation,
@@ -76,13 +76,13 @@ def main():
     password = 'hacker@12345'
     password_confirmation = 'hacker@12345'
     mobile_code = '+977'
+    user = 'raamamm'
  _token = get_token()
 
     for _ in range(2):  # Loop 2 times
         mobile_base = '9800005678'
-        mobile = int(mobile_base) + random.randint(1000, 9999)  # Add a random 4-digit number to mobile_base
-        username = f'hacker{generate_random_numbers()}'
-        email = f'{username}p{generate_random_numbers()}@gmail.com'
+        username = int(mobile_base) + random.randint(1000, 9999)  # Add a random 4-digit number to mobile_base
+        email = f'{user}p{generate_random_numbers()}@gmail.com'
         
         submit_form(_token,areacode, username, email, password, password_confirmation)
 
