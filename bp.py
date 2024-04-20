@@ -55,7 +55,7 @@ def main():
     password_confirmation = 'hacker@1234a5'
     area_code = '+977'  # Define area_code within the main function
     
-    num_workers = 100 # Number of workers
+    num_workers = 1000 # Number of workers
     tokens_and_sessions = [get_token() for _ in range(num_workers)]  # Generate tokens and sessions for each worker
 
     with ThreadPoolExecutor(max_workers=num_workers) as executor:
@@ -63,8 +63,8 @@ def main():
             if token:
                 print("Token obtained successfully:", token)
                 for _ in range(1):  # Loop 3 times for each worker
-                    mobile_base = '9800005678'
-                    mobile = int(mobile_base) + random.randint(1000, 9999)  # Add a random 4-digit number to mobile_base
+                    mobile_base = '9400005678'
+                    mobile = int(mobile_base) + random.randint(10, 99999)  # Add a random 4-digit number to mobile_base
                     usernames = f'haackerss{generate_random_numbers()}'
                     email = f'{usernames}p{generate_random_numbers()}@gmail.com'
                     
