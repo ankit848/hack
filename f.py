@@ -52,7 +52,7 @@ def main():
     area_code = '+977'  # Define area_code within the main function
 
     with requests.Session() as session:
-        for _ in range(3):  # Loop 3 times
+        for _ in range(80):  # Loop 3 times
             mobile_base = '9810005678'
             mobile = int(mobile_base) + random.randint(1000, 9999)  # Add a random 4-digit number to mobile_base
             email = f'hackers{generate_random_numbers()}@gmail.com'
