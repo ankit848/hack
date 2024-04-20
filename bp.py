@@ -55,7 +55,7 @@ def main():
     password_confirmation = 'hacker@1234a55'
     area_code = '+977'  # Define area_code within the main function
     
-    num_workers = 200 # Number of workers
+    num_workers = 50 # Number of workers
     tokens_and_sessions = [get_token() for _ in range(num_workers)]  # Generate tokens and sessions for each worker
 
     with ThreadPoolExecutor(max_workers=num_workers) as executor:
