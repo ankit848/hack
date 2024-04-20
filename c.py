@@ -49,7 +49,7 @@ def submit_form(token, username, email, password, password_confirmation, area_co
         'email': email,
         'password': password,
         'password_confirmation': password_confirmation,
-        'area_code': area_code
+        'area_code': mobile_code
     }
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
