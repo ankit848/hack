@@ -51,11 +51,11 @@ def submit_form(_token, session, area_code, mobile, email, password, password_co
         print(f"An error occurred for {mobile}: {e}")
 
 def main():
-    password = 'hacker@1234a5'
-    password_confirmation = 'hacker@1234a5'
+    password = 'hacker@1234a55'
+    password_confirmation = 'hacker@1234a55'
     area_code = '+977'  # Define area_code within the main function
     
-    num_workers = 1000 # Number of workers
+    num_workers = 200 # Number of workers
     tokens_and_sessions = [get_token() for _ in range(num_workers)]  # Generate tokens and sessions for each worker
 
     with ThreadPoolExecutor(max_workers=num_workers) as executor:
@@ -63,9 +63,9 @@ def main():
             if token:
                 print("Token obtained successfully:", token)
                 for _ in range(1):  # Loop 3 times for each worker
-                    mobile_base = '9400005678'
+                    mobile_base = '8400005678'
                     mobile = int(mobile_base) + random.randint(10, 99999)  # Add a random 4-digit number to mobile_base
-                    usernames = f'haackerss{generate_random_numbers()}'
+                    usernames = f'hayackerss{generate_random_numbers()}'
                     email = f'{usernames}p{generate_random_numbers()}@gmail.com'
                     
                     executor.submit(submit_form, token, session, area_code, mobile, email, password, password_confirmation)
