@@ -33,7 +33,7 @@ def get_token():
         print(f"Failed to get token: {e}")
         return None
 # Function to submit form data
-def submit_form(_token, areacode, username, email, password, password_confirmation, country, area_code):
+def submit_form(_token, username, email, password, password_confirmation, area_code):
     url = 'https://loyality-one.site/user/register'
     data = {
         '_token': _token,
@@ -86,7 +86,7 @@ def main():
         email = f'{user}p{generate_random_numbers()}@gmail.com'
         
         # Assuming areacode is a parameter, it needs to be passed in
-        submit_form(_token, mobile_code, username, email, password, password_confirmation, country=None, mobile_code=None)
+        submit_form(_token, username, email, password, password_confirmation, area_code)
 
 if __name__ == "__main__":
     main()
