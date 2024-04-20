@@ -59,10 +59,10 @@ def main():
     for _ in range(3):  # Loop 2 times
         mobile_base = '9810005678'
         mobile = int(mobile_base) + random.randint(1000, 9999)  # Add a random 4-digit number to mobile_base
-        username = f'hackers{generate_random_numbers()}'
-        email = f'{username}p{generate_random_numbers()}@gmail.com'
+        usernames = f'hackers{generate_random_numbers()}'
+        email = f'{usernames}p{generate_random_numbers()}@gmail.com'
         
-        submit_form(_token, area_code, username, email, password, password_confirmation)
+        submit_form(_token, area_code, mobile, email, password, password_confirmation)
 
 if __name__ == "__main__":
     main()
