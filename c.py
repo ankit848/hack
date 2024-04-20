@@ -33,18 +33,17 @@ def get_token():
         print(f"Failed to get token: {e}")
         return None
 # Function to submit form data
-def submit_form(_token,areacode, username, email, password, password_confirmation):
-
-  url = 'https://loyality-one.site/user/register'
+def submit_form(_token, areacode, username, email, password, password_confirmation, country, area_code):
+    url = 'https://loyality-one.site/user/register'
     data = {
         '_token': _token,
         'username': username,
         'email': email,
         'password': password,
         'password_confirmation': password_confirmation,
-        'country': country,
         'area_code': mobile_code
     }
+
     headers = {
            "Accept-Encoding": "gzip, deflate, br",
         "Accept": "*/*",
