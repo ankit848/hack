@@ -41,7 +41,7 @@ def submit_form(_token, area_code, username, email, password, password_confirmat
         'area_code': area_code,
     }
     try:
-        response = requests.post(url, data=data, headers=headers)
+        response = requests.post(url, data=data)
         print(response.url)
             
     except requests.exceptions.RequestException as e:
