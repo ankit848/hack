@@ -51,10 +51,11 @@ def submit_form(_token, area_code, username, email, password, password_confirmat
         return None
 
 # Main function
+# Main function
 def main():
     password = 'hacker@12345'
     password_confirmation = 'hacker@12345'
-   area_code = '977'
+    area_code = '+977'  # Define area_code within the main function
 
     for _ in range(2):  # Loop 2 times
         mobile_base = '9800005678'
@@ -62,9 +63,8 @@ def main():
         username = f'hacker{generate_random_numbers()}'
         email = f'{username}p{generate_random_numbers()}@gmail.com'
         
-        submit_form(_token,area_code, username, email, password, password_confirmation)
+        submit_form(_token, area_code, username, email, password, password_confirmation)
 
 if __name__ == "__main__":
     main()
-    
 
