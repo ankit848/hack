@@ -40,7 +40,8 @@ def submit_form(_token, area_code, mobile, email, password, password_confirmatio
         'password_confirmation': password_confirmation,
         'area_code': area_code,
     }
- try:
+    
+try:
     response = requests.post(url, data=data)
     print(mobile)
     print(response.url)
@@ -48,9 +49,6 @@ except requests.exceptions.RequestException as e:
     print(f"Failed to submit form: {e}")
     return None
 
-
-# Main function
-# Main function
 def main():
     password = 'hacker@12345'
     password_confirmation = 'hacker@12345'
