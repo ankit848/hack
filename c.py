@@ -38,7 +38,6 @@ def submit_form(_token, area_code, username, email, password, password_confirmat
         'email': email,
         'password': password,
         'password_confirmation': password_confirmation,
-        'country': country,
         'area_code': area_code,
     }
     try:
@@ -55,7 +54,6 @@ def submit_form(_token, area_code, username, email, password, password_confirmat
 def main():
     password = 'hacker@12345'
     password_confirmation = 'hacker@12345'
-    country = 'Nepal'
     area_code = '+977'  # Define area_code within the main function
 
     for _ in range(2):  # Loop 2 times
