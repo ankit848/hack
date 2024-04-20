@@ -21,31 +21,33 @@ def get_token():
         "Cookie":"MicrosoftApplicationsTelemetryDeviceId=58f4586a-8ed6-4cc7-8e4c-4044676e6428; MicrosoftApplicationsTelemetryFirstLaunchTime=2024-04-20T02:44:43.485Z; MicrosoftApplicationsTelemetryDeviceId=58f4586a-8ed6-4cc7-8e4c-4044676e6428; MicrosoftApplicationsTelemetryFirstLaunchTime=2024-04-20T02:44:43.485Z; XSRF-TOKEN=eyJpdiI6ImFZaVcrN25YNnhnMm5HbERna3NzR2c9PSIsInZhbHVlIjoiSHM3cExjdE1rcFp1ekpsWVh2T3RyVDF3emhGUDZ1ZDdlRzhydTJFNjl3NWlTWisvL1JSOWNoU2FUMkZyNTIvc3VBQzJjV1ZJQVJ2T05zTGlQWCtvNmdXTkY0eUR0N1hZdmUydVFFM0RZMm1PMVJoVExSSE1oRXZFMkJYZXhlRGEiLCJtYWMiOiI5YThiMTUwZjI2ODk1MTkzMGRhMzljOGRhMTgxZTYzYjliNTNjMDJlMThlYmMzNmYyYjk0NTFhODI4ZjE2YTE1IiwidGFnIjoiIn0%3D; hyiplab_session=eyJpdiI6ImxOUFl2RWg1U0hBa0FQMXBMNzFjNmc9PSIsInZhbHVlIjoicTRKb3J0U2tMZEg2TUFmYzZVNWFveERIMXFUSUxQN2Z1cGZjNHl3STFMT1NMRjRNU1lIem85OVc1b0VLU25lUEFtWVYzV09uZzVJczhMQ0VtTXNTQ2RnK20yU2hXa2duNE5pR290ZktlMEYwRVhQNHpQNnRESVRia0MzNGdKc3kiLCJtYWMiOiI0Yjg3Y2VhMzk3MmExMWRhY2JmMGE3YmNlZDgwODgyN2RkZDgzMjZjNDZkZTI2NDAxMzFhMDNjMDdkNmFjZjgyIiwidGFnIjoiIn0%3D",
         "User-Agent": "Mozilla/5.0 (Linux; Android 10; CLT-L29 Build/HUAWEICLT-L29; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/110.0.5481.153 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/405.0.0.23.72;]",
     }
-    try:
+
+   try:
         # Simulate the behavior of the JavaScript code to obtain token
         response = requests.get(url, headers=headers)
         response.raise_for_status()  # Raise an exception for non-2xx status codes
         soup = BeautifulSoup(response.content, 'html.parser')
         token = soup.find('input', {'name': '_token'}).get('value')
+        print("Token obtained:", token)  # Print the token obtained
         return token
         
     except requests.exceptions.RequestException as e:
         print(f"Failed to get token: {e}")
         return None
-          tokens = get_token() 
+
 # Function to submit form data
-def submit_form(_token, username, email, password, password_confirmation, area_code):
+def submit_form(token, username, email, password, password_confirmation, area_code):
     url = 'https://loyality-one.site/user/register'
     data = {
-        '_token': tokens,
+        '_token': token,
         'username': username,
         'email': email,
         'password': password,
         'password_confirmation': password_confirmation,
-        'area_code': mobile_code
+        'area_code': area_code
     }
-
     headers = {
+        'Content-Type': 'application/x-www-form-urlencoded',
            "Accept-Encoding": "gzip, deflate, br",
         "Accept": "*/*",
         "Host":"loyality-one.site",
@@ -56,23 +58,21 @@ def submit_form(_token, username, email, password, password_confirmation, area_c
         "Set-Cookie":"hyiplab_session=eyJpdiI6InhGZzBHc3dha3BNcWlVMlF3ZlJLOWc9PSIsInZhbHVlIjoiS0VNVC9IS3dLVDRsdmlhaUNncWJTbUsxNmZmNEZNaHowK2wzdmllRVhId3RFbDR0WUJ1dVZtU1JYM1dhUFUzelo3WHVMU0lnOU1mWUQxOE1ackppcjFvR2NBb2RnVGtuSHdoT0c5Sy9qYktCT1JEZlljUGoxUFNrMGxSa3V2aXAiLCJtYWMiOiI1ZDY0YzViMDdjMWU1NTE3Y2I4MmYwYTM5NTVjMzVjMzAxMWQxMzI2YWZkYzhlYTU3NjFkOTUxOTcwZTNhOGZlIiwidGFnIjoiIn0%3D; expires=Sat, 20 Apr 2024 04:48:24 GMT; Max-Age=7200; path=/; httponly; samesite=lax; secure",
         "Cookie":"MicrosoftApplicationsTelemetryDeviceId=58f4586a-8ed6-4cc7-8e4c-4044676e6428; MicrosoftApplicationsTelemetryFirstLaunchTime=2024-04-20T02:44:43.485Z; MicrosoftApplicationsTelemetryDeviceId=58f4586a-8ed6-4cc7-8e4c-4044676e6428; MicrosoftApplicationsTelemetryFirstLaunchTime=2024-04-20T02:44:43.485Z; XSRF-TOKEN=eyJpdiI6ImFZaVcrN25YNnhnMm5HbERna3NzR2c9PSIsInZhbHVlIjoiSHM3cExjdE1rcFp1ekpsWVh2T3RyVDF3emhGUDZ1ZDdlRzhydTJFNjl3NWlTWisvL1JSOWNoU2FUMkZyNTIvc3VBQzJjV1ZJQVJ2T05zTGlQWCtvNmdXTkY0eUR0N1hZdmUydVFFM0RZMm1PMVJoVExSSE1oRXZFMkJYZXhlRGEiLCJtYWMiOiI5YThiMTUwZjI2ODk1MTkzMGRhMzljOGRhMTgxZTYzYjliNTNjMDJlMThlYmMzNmYyYjk0NTFhODI4ZjE2YTE1IiwidGFnIjoiIn0%3D; hyiplab_session=eyJpdiI6ImxOUFl2RWg1U0hBa0FQMXBMNzFjNmc9PSIsInZhbHVlIjoicTRKb3J0U2tMZEg2TUFmYzZVNWFveERIMXFUSUxQN2Z1cGZjNHl3STFMT1NMRjRNU1lIem85OVc1b0VLU25lUEFtWVYzV09uZzVJczhMQ0VtTXNTQ2RnK20yU2hXa2duNE5pR290ZktlMEYwRVhQNHpQNnRESVRia0MzNGdKc3kiLCJtYWMiOiI0Yjg3Y2VhMzk3MmExMWRhY2JmMGE3YmNlZDgwODgyN2RkZDgzMjZjNDZkZTI2NDAxMzFhMDNjMDdkNmFjZjgyIiwidGFnIjoiIn0%3D",
         "User-Agent": "Mozilla/5.0 (Linux; Android 10; CLT-L29 Build/HUAWEICLT-L29; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/110.0.5481.153 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/405.0.0.23.72;]",
-   }
+  
+    }
     try:
         response = requests.post(url, data=data, headers=headers)
-        response.raise_for_status()  # Raise an exception for non-2xx status codes
-        print("Form submitted successfully.")
-        print("Submitted Data:")
-        print(f"Username: {mobile}")
-        print(f"Email: {email}")
-        print(f"Mobile Code: {mobile_code}")
-        print(f"Password: {password}")
-        print(f"Password Confirmation: {password_confirmation}")
-        print(f"Response URL: {response.url}")
+        response.raise_for_status()
+        print("Form submitted successfully!")
     except requests.exceptions.RequestException as e:
-        print(f"Form submission failed: {e}")
+        print(f"Failed to submit form: {e}")
 
-# Main function
-import random
+# Getting the token
+token = get_token()
+if token:
+    # You can then use this token to submit the form
+    submit_form(token, username, email, password, password_confirmation, area_code)
+
 
 def main():
     password = 'hacker@12345'
