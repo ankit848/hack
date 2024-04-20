@@ -43,7 +43,7 @@ def submit_form(_token,areacode, username, email, password, password_confirmatio
         'password': password,
         'password_confirmation': password_confirmation,
         'country': country,
-        'area_code': mobile_code,
+        'area_code': mobile_code
     }
     headers = {
            "Accept-Encoding": "gzip, deflate, br",
