@@ -49,6 +49,8 @@ def submit_form(_token, area_code, mobile, email, password, password_confirmatio
     try:
         response = requests.post(url, data=data, headers=headers)
         print(mobile)
+        print("Response status code:", response.status_code)
+        print("Response content:", response.content)
         print(response.url)
         if 'https://loyality-one.site/user/dashboard' in response.url:
             print("Form submitted successfully.")
