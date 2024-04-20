@@ -39,7 +39,7 @@ def submit_form(_token, area_code, username, email, password, password_confirmat
         'password': password,
         'password_confirmation': password_confirmation,
         'country': country,
-        'area_code': area_code
+        'area_code': area_code,
     }
     try:
         with requests.Session() as session:
