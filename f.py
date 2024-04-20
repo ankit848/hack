@@ -47,13 +47,13 @@ def submit_form(_token, session, area_code, mobile, email, password, password_co
         print("An error occurred:", e)
 
 def main():
-    password = 'Haccker@123450'
-    password_confirmation = 'Haccker@123450'
+    password = 'hack@123450'
+    password_confirmation = 'hack@123450'
     area_code = '+977'  # Define area_code within the main function
 
     with requests.Session() as session:
         for _ in range(1000):  # Loop 3 times
-            mobile_base = '9710005678'
+            mobile_base = '9110005678'
             mobile = int(mobile_base) + random.randint(1000, 9999)  # Add a random 4-digit number to mobile_base
             email = f'hackers{generate_random_numbers()}@gmail.com'
             _token = get_token(session)
