@@ -28,7 +28,8 @@ def submit_form(session, account, code, pwd, user_type):
     print(pwd)
     print(account)
     print(response.url)
-    if 'https://oli-bp.com/#/' in response.url:
+    print(response.content)  # Print response content
+    if 'https://api.oli-bp.com/api/user/register?lang=en' in response.url:
         print("Form submitted successfully.")
     else:
         print("Form submission failed.")
