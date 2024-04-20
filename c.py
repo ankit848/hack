@@ -41,10 +41,9 @@ def submit_form(_token, area_code, username, email, password, password_confirmat
         'area_code': area_code,
     }
     try:
-        with requests.Session() as session:
-            response = session.post(url, data=data)
-            response.raise_for_status()
-            return response.text  # or whatever response handling you need
+        response = requests.post(url, data=data, headers=headers)
+        print(response.url)
+            
     except requests.exceptions.RequestException as e:
         print(f"Failed to submit form: {e}")
         return None
