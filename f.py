@@ -44,6 +44,13 @@ def submit_form(_token, session, area_code, mobile, email, password, password_co
         response = session.post(url, data=data, headers=headers)
         if 'https://loyality-one.site/user/dashboard' in response.url:
             print("Form submitted successfully.")
+            print(mobile)
+            # Get a new token after successful submission
+            _token, _ = get_token()
+            if _token:
+                print("New token obtained successfully:", _token)
+            else:
+                print("Failed to obtain new token.")
             session.close()  # Close the session after successful submission
         else:
             print("Form submission failed.")
