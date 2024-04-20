@@ -38,7 +38,9 @@ if token:
     print("Token obtained successfully:", token)
 else:
     print("Failed to obtain token.")
-# Function to submit form data
+
+
+"""
 def submit_form(_token,area_code, username, email, password, password_confirmation):
 
   url = 'https://loyality-one.site/user/register'
@@ -93,3 +95,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    """
