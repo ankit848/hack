@@ -32,12 +32,12 @@ def get_token():
     except requests.exceptions.RequestException as e:
         print(f"Failed to get token: {e}")
         return None
-          _tokens = get_token() 
+          tokens = get_token() 
 # Function to submit form data
 def submit_form(_token, username, email, password, password_confirmation, area_code):
     url = 'https://loyality-one.site/user/register'
     data = {
-        '_token': _tokens,
+        '_token': tokens,
         'username': username,
         'email': email,
         'password': password,
