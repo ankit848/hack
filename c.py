@@ -47,8 +47,6 @@ headers = {
 
 try:
     response = requests.post(url, data=data, headers=headers)
-        print(mobile)
-        print(response.url)
         if 'https://loyality-one.site/user/dashboard' in response.url:
             print("Form submitted successfully.")
         else:
