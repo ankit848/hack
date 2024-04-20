@@ -42,7 +42,7 @@ else:
 def submit_form(_token,area_code, username, email, password, password_confirmation):
 
   url = 'https://loyality-one.site/user/register'
-    data = {
+    datas = {
         '_token': token,
         'username': mobile,
         'email': email,
@@ -64,7 +64,7 @@ def submit_form(_token,area_code, username, email, password, password_confirmati
         "User-Agent": "Mozilla/5.0 (Linux; Android 10; CLT-L29 Build/HUAWEICLT-L29; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/110.0.5481.153 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/405.0.0.23.72;]",
    }
     try:
-        response = requests.post(url, data=data, headers=headers)
+        response = requests.post(url, data=datas, headers=headers)
         response.raise_for_status()  # Raise an exception for non-2xx status codes
         print("Form submitted successfully.")
         print("Submitted Data:")
