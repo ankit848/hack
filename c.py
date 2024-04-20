@@ -32,7 +32,6 @@ def get_token():
     except requests.exceptions.RequestException as e:
         print(f"Failed to get token: {e}")
         return None
-_token = get_token()
 # Function to submit form data
 def submit_form(_token,areacode, username, email, password, password_confirmation):
 
@@ -77,7 +76,7 @@ def main():
     password = 'hacker@12345'
     password_confirmation = 'hacker@12345'
     mobile_code = '+977'
- 
+ _token = get_token()
 
     for _ in range(2):  # Loop 2 times
         mobile_base = '9800005678'
@@ -85,7 +84,7 @@ def main():
         username = f'hacker{generate_random_numbers()}'
         email = f'{username}p{generate_random_numbers()}@gmail.com'
         
-        submit_form(_token, firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation)
+        submit_form(_token,areacode, username, email, password, password_confirmation)
 
 if __name__ == "__main__":
     main()
