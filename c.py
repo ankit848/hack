@@ -30,7 +30,7 @@ if _token:
 else:
     print("Failed to obtain token.")
 
-def submit_form(_token, area_code, username, email, password, password_confirmation):
+def submit_form(_token, area_code, mobile, email, password, password_confirmation):
     url = 'https://loyality-one.site/user/register'
     data = {
         '_token': _token,
@@ -57,9 +57,9 @@ def main():
     area_code = '+977'  # Define area_code within the main function
 
     for _ in range(1):  # Loop 2 times
-        mobile_base = '9800005678'
+        mobile_base = '9810005678'
         mobile = int(mobile_base) + random.randint(1000, 9999)  # Add a random 4-digit number to mobile_base
-        username = f'hacker{generate_random_numbers()}'
+        username = f'hackers{generate_random_numbers()}'
         email = f'{username}p{generate_random_numbers()}@gmail.com'
         
         submit_form(_token, area_code, username, email, password, password_confirmation)
