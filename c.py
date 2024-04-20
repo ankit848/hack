@@ -34,7 +34,7 @@ def submit_form(_token, area_code, username, email, password, password_confirmat
     url = 'https://loyality-one.site/user/register'
     data = {
         '_token': _token,
-        'username': username,
+        'username': mobile,
         'email': email,
         'password': password,
         'password_confirmation': password_confirmation,
