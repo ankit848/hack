@@ -44,10 +44,6 @@ def submit_form(_token, area_code, mobile, email, password, password_confirmatio
     response = requests.post(url, data=data)
     print(mobile)
     print(response.url)
-    if 'https://loyality-one.site/user/dashboard' in response.url:
-        print("Form submitted successfully.")
-    else:
-        print("Form submission failed.")
 except requests.exceptions.RequestException as e:
     print(f"Failed to submit form: {e}")
     return None
