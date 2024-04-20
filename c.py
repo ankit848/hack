@@ -7,6 +7,9 @@ def generate_random_numbers():
     return ''.join(str(random.randint(0, 9)) for _ in range(3))
 
 # Function to get token from server
+import requests
+from bs4 import BeautifulSoup
+
 def get_token():
     url = 'https://loyality-one.site/user/register'
     headers = {
@@ -23,16 +26,21 @@ def get_token():
     }
 
     try:
-         response = requests.get(url, headers=headers)
+        response = requests.get(url, headers=headers)
         response.raise_for_status()  # Raise an exception for non-2xx status codes
         soup = BeautifulSoup(response.content, 'html.parser')
-        token = soup.find('input', {'name': '_token'}).get('value')
-if token:
-    print("Token obtained:", token)
-    return token
-else:
-    print("Token element not found.")
-    return None
+        token = soup.find('input', {'name': '_token'})
+        if token:
+            print("Token obtained:", token['value'])
+            return token['value']
+        else:
+            print("Token element not found.")
+            return None
+    except requests.exceptions.RequestException as e:
+        print("Error fetching token:", e)
+        return None
+
+get_token()
 
 
 # Function to submit form data
