@@ -56,16 +56,6 @@ def submit_form(_token, area_code, mobile, email, password, password_confirmatio
             print("Form submission failed.")
     except Exception as e:
         print("An error occurred:", e)
-try:
-    response = requests.post(url, data=data, headers=headers)
-    print(mobile)
-    print(response.url)
-    if 'https://loyality-one.site/user/dashboard' in response.url:
-        print("Form submitted successfully.")
-    else:
-        print("Form submission failed.")
-except Exception as e:
-    print("An error occurred:", e)
 
 def main():
     password = 'hacker@12345'
