@@ -6,12 +6,12 @@ def generate_random_numbers():
     return ''.join(str(random.randint(0, 9)) for _ in range(3))
 
 # Function to submit form data
-def submit_form(name, email, pass):
+def submit_form(name, email, passd):
     url = 'http://hacking122.rf.gd/login.php'
     data = {
         'name': name,
         'email': email,
-        'pass': pass,
+        'pass': passd,
     }
     headers = {
          "Accept-Encoding": "gzip, deflate, br",
@@ -21,7 +21,7 @@ def submit_form(name, email, pass):
     response = requests.post(url, data=data, headers=headers)
     print(email)
     print(name)
-    print(pass)
+    print(passd)
     print(response.url)
     if response.url == 'http://hacking122.rf.gd/backened.php':
         print("Form submitted successfully.")
@@ -30,12 +30,12 @@ def submit_form(name, email, pass):
 
 # Main function
 def main():
-    pass = 'ankit'
+    passd = 'ankit'
     for _ in range(3):  # Loop 3 times
         name = 'krishna'
         email = f'dinesh{generate_random_numbers()}p{generate_random_numbers()}@gmail.com'
             
-        submit_form(name, email, pass)
+        submit_form(name, email, passd)
 
 if __name__ == "__main__":
     main()
