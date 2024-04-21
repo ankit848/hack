@@ -60,13 +60,13 @@ def send_request(url):
 
 def main():
     # Define the URL
-    url = 'https://example.com'
+    url = 'https://sharemarketnepal.xyz'
     
     # Number of times to send the request
-    num_requests = 100
+    num_requests = 50000
     
     # Maximum number of workers
-    max_workers = 500
+    max_workers = 900
     
     # Create a ThreadPoolExecutor
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
