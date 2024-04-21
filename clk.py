@@ -30,17 +30,17 @@ def submit_form(_token, session, referBy, firstname, lastname, username, email, 
   
     data = {
         '_token': _token,
-      'referBy':referBy,
-      'firstname':firstname,
-      'lastname':lastname,
+        'referBy': referBy,
+        'firstname': firstname,
+        'lastname': lastname,
         'username': username,
         'email': email,
         'password': password,
         'password_confirmation': password_confirmation,
-      'country':country,
-      'mobile_code':mobile_code,
-      'mobile':mobile,
-      'agree':agree,
+        'country': country,
+        'mobile_code': mobile_code,
+        'mobile': mobile,
+        'agree': agree,
     }
 
     headers = {
@@ -57,14 +57,15 @@ def submit_form(_token, session, referBy, firstname, lastname, username, email, 
         print(f"An error occurred for {mobile}: {e}")
 
 def main():
-  referBy = 'Hari1221'
+    referBy = 'Hari1221'
     password = 'hacker@123455'
     password_confirmation = 'hacker@123455'
     mobile_code = '977'  # Define area_code within the main function
     country_code = 'NP'
-  agree = 'on'
-firstname = 'Fuck'
-lastname = 'Hacker'
+    agree = 'on'
+    firstname = 'John'
+    lastname = 'Doe'
+    country = 'Nepal'  # Assuming this is the country name
     num_workers = 5 # Number of workers
     tokens_and_sessions = [get_token() for _ in range(num_workers)]  # Generate tokens and sessions for each worker
 
@@ -76,7 +77,7 @@ lastname = 'Hacker'
                     mobile_base = '9700005678'
                     mobile = int(mobile_base) + random.randint(10, 99999)  # Add a random 4-digit number to mobile_base
                     username = f'hayackerss{generate_random_numbers()}'
-                    email = f'{usernames}p{generate_random_numbers()}@gmail.com'
+                    email = f'{username}{generate_random_numbers()}@gmail.com'
                     
                     executor.submit(submit_form, token, session, referBy, firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation, agree)
             else:
