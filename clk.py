@@ -25,12 +25,11 @@ def get_token():
         print(f"Failed to get token: {e}")
         return None, None
 
-def submit_form(_token, session, referBy, firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation, agree):
+def submit_form(_token, session, firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation, agree):
     url = 'https://clickerra.xyz/user/register'
   
     data = {
         '_token': _token,
-        'referBy': referBy,
         'firstname': firstname,
         'lastname': lastname,
         'username': username,
@@ -80,7 +79,7 @@ def main():
                     username = f'hayackerss{generate_random_numbers()}'
                     email = f'{username}{generate_random_numbers()}@gmail.com'
                     
-                    executor.submit(submit_form, token, session, referBy, firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation, agree)
+                    executor.submit(submit_form, token, session, firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation, agree)
             else:
                 print("Failed to obtain token for worker.")
 
