@@ -26,11 +26,9 @@ def submit_form(name, email, password):
 
 # Main function
 def main():
-    password = '1234567890'
+    password = 'ankit'
     for _ in range(3):  # Loop 3 times
-        name = 'Radhey Radhey'
-        umobile = '9800005678'
-        umobile += str(random.randint(100, 999))  # Add a random 3-digit number to umobile
+        name = 'krishna'
         email = f'dinesh{generate_random_numbers()}p{generate_random_numbers()}@gmail.com'
             
         submit_form(name, email, password)
