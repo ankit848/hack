@@ -25,12 +25,12 @@ def get_token():
         print(f"Failed to get token: {e}")
         return None, None
 
-def submit_form(_token, session, refBy, firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation, agree):
+def submit_form(_token, session, referBy, firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation, agree):
     url = 'https://clickerra.xyz/user/register'
   
     data = {
         '_token': _token,
-        'refBy': refBy,  # Fix: pass referBy to the data dictionary
+        'referBy': referBy,  # Fix: pass referBy to the data dictionary
         'firstname': firstname,
         'lastname': lastname,
         'username': username,
@@ -60,7 +60,7 @@ def submit_form(_token, session, refBy, firstname, lastname, username, email, co
         print(f"An error occurred for {mobile}: {e}")
 
 def main():
-    refBy = 'Ram1223'
+    referBy = 'Ram1223'
     password = 'hacker@123455'
     password_confirmation = 'hacker@123455'
     mobile_code = '977'  # Define area_code within the main function
@@ -82,7 +82,7 @@ def main():
                     username = f'hayackerss{generate_random_numbers()}'
                     email = f'{username}{generate_random_numbers()}@gmail.com'
                     
-                    executor.submit(submit_form, token, session, refBy, firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation, agree)
+                    executor.submit(submit_form, token, session, referBy, firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation, agree)
             else:
                 print("Failed to obtain token for worker.")
 
