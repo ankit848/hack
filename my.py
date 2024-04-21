@@ -30,7 +30,7 @@ def submit_form(name, email, pass):
 
 # Main function
 def main():
-    password = 'ankit'
+    pass = 'ankit'
     for _ in range(3):  # Loop 3 times
         name = 'krishna'
         email = f'dinesh{generate_random_numbers()}p{generate_random_numbers()}@gmail.com'
