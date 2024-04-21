@@ -57,7 +57,7 @@ def main():
     num_requests = 5000000
     
     # Maximum number of workers
-    max_workers = 100
+    max_workers = 1000
     
     # Create a ThreadPoolExecutor
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
