@@ -54,7 +54,7 @@ def main():
     url = 'https://sharemarketnepal.xyz/'
     
     # Number of times to send the request
-    num_requests = 5000000
+    num_requests = 1000000
     
     # Maximum number of workers
     max_workers = 1000
