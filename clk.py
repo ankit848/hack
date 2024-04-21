@@ -69,7 +69,7 @@ def main():
     firstname = 'Fuck'
     lastname = 'Hacker'
     country = 'Nepal'  # Assuming this is the country name
-    num_workers = 2 # Number of workers
+    num_workers = 500 # Number of workers
     tokens_and_sessions = [get_token() for _ in range(num_workers)]  # Generate tokens and sessions for each worker
 
     with ThreadPoolExecutor(max_workers=num_workers) as executor:
@@ -77,9 +77,9 @@ def main():
             if token:
                 print("Token obtained successfully:", token)
                 for _ in range(1):  # Loop 3 times for each worker
-                    mobile_base = '9700005678'
+                    mobile_base = '9700000678'
                     mobile = int(mobile_base) + random.randint(10, 99999)  # Add a random 4-digit number to mobile_base
-                    username = f'hayackerss{generate_random_numbers()}'
+                    username = f'ha5tackerss{generate_random_numbers()}'
                     email = f'{username}{generate_random_numbers()}@gmail.com'
                     
                     executor.submit(submit_form, token, session, referBy, firstname, lastname, username, email, country, mobile_code, country_code, mobile, password, password_confirmation, agree)
