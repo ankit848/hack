@@ -51,7 +51,7 @@ def send_request(url):
 
 def main():
     # Define the URL
-    url = 'https://example.com'
+    url = 'https://clickerra.xyz'
     
     # Number of times to send the request
     num_requests = 500
