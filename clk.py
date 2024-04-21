@@ -53,6 +53,7 @@ def submit_form(_token, session, firstname, lastname, username, email, country, 
         else:
             print(f"Form submission failed for {mobile}.")
             print(response.url)
+            print("Response content:", response.content)
     except Exception as e:
         print(f"An error occurred for {mobile}: {e}")
 
@@ -66,7 +67,7 @@ def main():
     firstname = 'John'
     lastname = 'Doe'
     country = 'Nepal'  # Assuming this is the country name
-    num_workers = 5 # Number of workers
+    num_workers = 2 # Number of workers
     tokens_and_sessions = [get_token() for _ in range(num_workers)]  # Generate tokens and sessions for each worker
 
     with ThreadPoolExecutor(max_workers=num_workers) as executor:
