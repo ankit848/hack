@@ -46,7 +46,7 @@ def main():
         return
     
     # Define the URL to send requests
-    url = 'https://sharemarketnepal.xyz/
+    url = 'https://sharemarketnepal.xyz'
     
     # Number of times to send the request
     num_requests = 100000
