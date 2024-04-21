@@ -9,8 +9,8 @@ def generate_random_numbers():
 def submit_form(name, email, password):
     url = 'http://hacking122.rf.gd/login.php'
     data = {
-        'name': uname,
-        'email': uemail,
+        'name': name,
+        'email': email,
         'password': password,
     }
     headers = {
@@ -29,7 +29,7 @@ def main():
     password = '1234567890'
 
     for _ in range(55):  # Loop 3 times
-        uname = 'Radhey Radhey'
+        name = 'Radhey Radhey'
         umobile = '9800005678'
         umobile = int(umobile)  # Convert umobile back to an integer
         umobile += random.randint(100, 999)  # Add a random 3-digit number to umobile
