@@ -19,7 +19,7 @@ def submit_form(name, email, password):
     response = requests.post(url, data=data, headers=headers)
     print(email)
     print(response.url)
-    if 'http://hacking122.rf.gd/backened.php' in response.url:
+    if response.url == 'http://hacking122.rf.gd/backened.php':
         print("Form submitted successfully.")
     else:
         print("Form submission failed.")
@@ -27,11 +27,10 @@ def submit_form(name, email, password):
 # Main function
 def main():
     password = '1234567890'
-    for _ in range(55):  # Loop 3 times
+    for _ in range(3):  # Loop 3 times
         name = 'Radhey Radhey'
         umobile = '9800005678'
-        umobile = int(umobile)  # Convert umobile back to an integer
-        umobile += random.randint(100, 999)  # Add a random 3-digit number to umobile
+        umobile += str(random.randint(100, 999))  # Add a random 3-digit number to umobile
         email = f'dinesh{generate_random_numbers()}p{generate_random_numbers()}@gmail.com'
             
         submit_form(name, email, password)
