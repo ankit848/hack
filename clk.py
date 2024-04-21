@@ -53,6 +53,7 @@ def submit_form(_token, session, referBy, firstname, lastname, username, email, 
             print(f"Form submitted successfully for {mobile},{email},{username}.")
         else:
             print(f"Form submission failed for {mobile}.")
+            print(response.url)
     except Exception as e:
         print(f"An error occurred for {mobile}: {e}")
 
