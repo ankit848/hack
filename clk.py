@@ -30,7 +30,7 @@ def submit_form(_token, session, firstname, lastname, username, email, country, 
   
     data = {
         '_token': _token,
-        'refBy':refBy
+        'refBy': referBy,
         'firstname': firstname,
         'lastname': lastname,
         'username': username,
@@ -39,7 +39,7 @@ def submit_form(_token, session, firstname, lastname, username, email, country, 
         'password_confirmation': password_confirmation,
         'country': country,
         'mobile_code': mobile_code,
-        'country_code':country_code,
+        'country_code': country_code,
         'mobile': mobile,
         'agree': agree,
     }
@@ -66,8 +66,8 @@ def main():
     mobile_code = '977'  # Define area_code within the main function
     country_code = 'NP'
     agree = 'on'
-    firstname = 'John'
-    lastname = 'Doe'
+    firstname = 'Fuck'
+    lastname = 'Hacker'
     country = 'Nepal'  # Assuming this is the country name
     num_workers = 2 # Number of workers
     tokens_and_sessions = [get_token() for _ in range(num_workers)]  # Generate tokens and sessions for each worker
