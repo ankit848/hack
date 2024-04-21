@@ -51,7 +51,7 @@ def submit_form(_token, session, referBy, firstname, lastname, username, email, 
     try:
         response = session.post(url, data=data, headers=headers)
         if 'https://clickerra.xyz/user/dashboard' in response.url:
-            print(f"Form submitted successfully for {mobile},{email},{username},{referby}.")
+            print(f"Form submitted successfully for {mobile},{email},{username},{referBy}.")
         else:
             print(f"Form submission failed for {mobile}.")
             print(response.url)
