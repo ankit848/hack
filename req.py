@@ -54,10 +54,10 @@ def main():
     url = 'https://clickerra.xyz'
     
     # Number of times to send the request
-    num_requests = 50
+    num_requests = 5000000
     
     # Maximum number of workers
-    max_workers = 100000
+    max_workers = 100
     
     # Create a ThreadPoolExecutor
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
