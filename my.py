@@ -27,7 +27,6 @@ def submit_form(name, email, password):
 # Main function
 def main():
     password = '1234567890'
-
     for _ in range(55):  # Loop 3 times
         name = 'Radhey Radhey'
         umobile = '9800005678'
