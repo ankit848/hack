@@ -11,7 +11,7 @@ def submit_form(name, email, password):
     data = {
         'name': name,
         'email': email,
-        'password': password,
+        'pass': password,
     }
     headers = {
          "Accept-Encoding": "gzip, deflate, br",
