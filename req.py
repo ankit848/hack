@@ -59,7 +59,7 @@ def send_request(url):
 
 def main():
     # Define the URL
-    url = 'https://loyality-one.site'
+    url = 'http://hacking122.rf.gd/login.php?i=1'
     
     # Number of times to send the request
     num_requests = 100000
