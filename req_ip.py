@@ -50,10 +50,10 @@ def send_request(url):
 
 def main():
     # Define the URL
-    url = 'http://hacking122.rf.gd'
+    url = 'http://hacking122.rf.gd/'
     
     # Number of times to send the request
-    num_requests = 100
+    num_requests = 10000
     
     # Maximum number of workers
     max_workers = 500
