@@ -1,28 +1,20 @@
+import http.cookiejar
 import os
-import sqlite3
 
 def get_chrome_cookies():
-    # Locate the Cookies file
-    user_data_dir = os.path.expanduser("~/.config/google-chrome/Default")  # Update this path as per your system
-    cookies_file = os.path.join(user_data_dir, "Cookies")
+    # Path to Chrome's cookie file
+    cookie_file_path = os.path.expanduser("~/.config/google-chrome/Default/Cookies")
 
-    # Connect to the SQLite database
-    conn = sqlite3.connect(cookies_file)
-    cursor = conn.cursor()
+    # Create a MozillaCookieJar object
+    cookie_jar = http.cookiejar.MozillaCookieJar()
 
-    # Query the cookies table
-    cursor.execute("SELECT name, value FROM cookies")
+    # Load cookies from the Chrome cookie file
+    cookie_jar.load(cookie_file_path, ignore_discard=True, ignore_expires=True)
 
-    # Fetch all cookies
-    cookies = cursor.fetchall()
+    # Return the cookies
+    return cookie_jar
 
-    # Close the connection
-    conn.close()
-
-    return cookies
-
-# Get and print Chrome cookies
+# Example usage
 chrome_cookies = get_chrome_cookies()
-print("Cookies from Chrome:")
 for cookie in chrome_cookies:
-    print(cookie[0], ":", cookie[1])
+    print(cookie)
