@@ -10,7 +10,7 @@ counter_lock = threading.Lock()
 
 def show():
     os.system('clear')
-    print("\033[1m\033[91m           𝔻𝔻𝕠𝕊 𝔸𝕋𝕋𝔸ℂ𝕂\033[0m")
+    print("\033[1m\033[91m                 𝔻𝔻𝕠𝕊 𝔸𝕋𝕋𝔸ℂ𝕂\033[0m")
     print("\n\n")
 
                                                                                  
