@@ -10,7 +10,8 @@ counter_lock = threading.Lock()
 
 def show():
     os.system('clear')
-    print("\033[91m ██████╗ ██████╗  ██████╗ ███████╗     █████╗ ████████╗████████╗ █████╗  ██████╗██╗  ██╗\n██╔══██╗██╔══██╗██╔═══██╗██╔════╝    ██╔══██╗╚══██╔══╝╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝\n██║  ██║██║  ██║██║   ██║███████╗    ███████║   ██║      ██║   ███████║██║     █████╔╝ \n██║  ██║██║  ██║██║   ██║╚════██║    ██╔══██║   ██║      ██║   ██╔══██║██║     ██╔═██╗ \n██████╔╝██████╔╝╚██████╔╝███████║    ██║  ██║   ██║      ██║   ██║  ██║╚██████╗██║  ██╗\n╚═════╝ ╚═════╝  ╚═════╝ ╚══════╝    ╚═╝  ╚═╝   ╚═╝      ╚═╝   ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝\n                                                                                       \033[0m")
+    print("\033[91m𝓓𝓓𝓸𝓢 𝓐𝓣𝓣𝓐𝓒𝓚\033[0m")
+    print("\\033[93mnBy Ankit\033[0m")
 
                                                                                  
 
@@ -45,13 +46,13 @@ def send_request(url):
         if response.status_code == 200:
             with counter_lock:
                 success_counter += 1
-            print(f"{success_counter} Request to {url} with User-Agent {user_agent} successful")
+            print(f"\033[1;35m{success_counter} => Request to \033[1;37m{url} with User-Agent \033[1;37m{user_agent} \033[0;32msuccessful\033[0m")
             # Process response data if needed
         else:
-            print(f"Request to {url} with User-Agent {user_agent} failed with status code: {response.status_code}")
+            print(f"Request to \033[0;31m{url} with User-Agent {user_agent} \033[0;31mfailed with status code: {response.status_code}\033[0m")
             
     except requests.exceptions.RequestException as e:
-        print(f"An error occurred while sending request to {url}: {e}")
+        print(f"An error occurred while sending request to \033[0;31m{url}\033[0m: {e}")
 
 def main():
     show()
@@ -72,7 +73,7 @@ def main():
                 executor.submit(send_request, url)
         
         # Print the total number of successful requests
-        print(f"Total successful requests: {success_counter}")
+        print(f"\033[0;33mTotal successful requests: {success_counter}\033[0m")
     
     except ValueError:
         print("Invalid input. Please enter a valid integer for number of requests and workers.")
