@@ -15,8 +15,8 @@ def startup():
 
 
 def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
     time.sleep(2)
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def send_request(url):
