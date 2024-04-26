@@ -3,11 +3,9 @@ import random
 from concurrent.futures import ThreadPoolExecutor
 import threading
 
-# Shared counter variable for successful requests
 success_counter = 0
 counter_lock = threading.Lock()
 
-# Function to send HTTP request with a random User-Agent
 def send_request(url):
     global success_counter
     
@@ -26,16 +24,12 @@ def send_request(url):
             "SamsungBrowser/17.0 (Galaxy S23 Ultra; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Mobile Safari/537.36",
         ]
         
-        # Choose a random User-Agent from the list
         user_agent = random.choice(user_agents)
         
-        # Set the User-Agent header
         headers = {"User-Agent": user_agent}
         
-        # Send GET request with the specified User-Agent
         response = requests.get(url, headers=headers)
         
-        # Check if the request was successful (status code 200)
         if response.status_code == 200:
             with counter_lock:
                 success_counter += 1
@@ -62,7 +56,6 @@ def main():
             for _ in range(num_requests):
                 executor.submit(send_request, url)
         
-        # Print the total number of successful requests
         print(f"Total successful requests: {success_counter}")
     
     except ValueError:
