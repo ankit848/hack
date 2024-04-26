@@ -9,7 +9,7 @@ success_counter = 0
 counter_lock = threading.Lock()
 
 def startup():
-    print("This tool is only for Educational Purpose.")
+    print("\033[1;92mThis tool is onlt for Educational Purpose.\033[0m")
     print("\n")
     clear_screen()
 
@@ -55,6 +55,7 @@ def send_request(url):
         print(f"An error occurred while sending request to {url}: {e}")
 
 def main():
+    os.system('cls' if os.name == 'nt' else 'clear')
     startup()
     
     try:
