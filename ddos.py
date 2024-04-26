@@ -56,13 +56,13 @@ def main():
     show()
     try:
         # Define the URL
-        url = input("Enter target URL: ")
+        url = input("\033[96mEnter target URL: ")
         
         # Number of times to send the request
-        num_requests = int(input("Enter number of requests: "))
+        num_requests = int(input("\033[97mEnter number of requests: "))
         
         # Maximum number of workers
-        max_workers = int(input("Enter number of workers: "))
+        max_workers = int(input("\033[94mEnter number of workers: "))
         
         # Create a ThreadPoolExecutor
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
