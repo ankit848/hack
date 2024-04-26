@@ -46,13 +46,13 @@ def send_request(url):
         if response.status_code == 200:
             with counter_lock:
                 success_counter += 1
-            print(f"\033[1;35m{success_counter} => Request to \033[1;37m{url} with User-Agent \033[1;37m{user_agent} \033[0;32msuccessful\033[0m")
+            print(f"\033[1;35m{success_counter} => Request to \033[1;37m{url} \033[1;34mwith User-Agent \033[1;37m{user_agent} \033[0;32msuccessful\033[0m")
             # Process response data if needed
         else:
             print(f"Request to \033[0;31m{url} with User-Agent {user_agent} \033[0;31mfailed with status code: {response.status_code}\033[0m")
             
     except requests.exceptions.RequestException as e:
-        print(f"An error occurred while sending request to \033[0;31m{url}\033[0m: {e}")
+        print(f"\033[0mAn error occurred while sending request to \033[0;31m{url}\033[0m: {e}")
 
 def main():
     show()
