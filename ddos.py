@@ -39,7 +39,7 @@ def send_request(url):
         if response.status_code == 200:
             with counter_lock:
                 success_counter += 1
-            print(f"{success_counter} Request to {url} with User-Agent {user_agent} successful")
+            print(f"{success_counter} =>Request to {url} with User-Agent {user_agent} successful")
 
         else:
             print(f"Request to {url} with User-Agent {user_agent} failed with status code: {response.status_code}")
