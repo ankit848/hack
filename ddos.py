@@ -9,7 +9,7 @@ success_counter = 0
 counter_lock = threading.Lock()
 
 def startup():
-    print("\033[1;92mThis tool is onlt for Educational Purpose.\033[0m")
+    print("\033[1;92m    This tool is only for Educational Purpose.\033[0m")
     print("\n")
     clear_screen()
 
