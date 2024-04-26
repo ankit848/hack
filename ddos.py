@@ -1,10 +1,23 @@
 import requests
 import random
+import os
+import time
 from concurrent.futures import ThreadPoolExecutor
 import threading
 
 success_counter = 0
 counter_lock = threading.Lock()
+
+def startup():
+    print("This tool is only for Educational Purpose.")
+    print("\n")
+    clear_screen()
+
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    time.sleep(2)
+
 
 def send_request(url):
     global success_counter
@@ -42,6 +55,8 @@ def send_request(url):
         print(f"An error occurred while sending request to {url}: {e}")
 
 def main():
+    startup()
+    
     try:
         
         url = input("Enter target URL: ")
