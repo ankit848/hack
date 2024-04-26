@@ -33,6 +33,6 @@ def login_to_moneypluslife(id, password):
             
 if __name__ == "__main__":
     # Replace 'your_id' and 'your_password' with the actual credentials
-    id = 'MPL2298238'
-    password = '9807298843'
+    user = '9807298840'
+    password = '9807298840'
     login_to_moneypluslife(id, password)
