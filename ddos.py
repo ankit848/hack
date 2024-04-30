@@ -22,7 +22,7 @@ def send_request(url):
         ua = UserAgent()
         
         # Generate 30 random user agents
-        user_agents = [ua.random for _ in range(30)]
+        user_agents = [ua.random for _ in range(1000)]
         
         # Choose a random User-Agent from the list
         user_agent = random.choice(user_agents)
