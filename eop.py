@@ -7,7 +7,7 @@ def generate_random_numbers():
 
 # Function to submit form data
 def submit_form(emtoken, user_email, user_name, user_pass, user_conpass, terms_check, user_ref):
-    url = 'https://earnzop.com/register/'
+    url = 'https://earnzop.com/em-apc/u/R92t3R'
 
     data = {
         'emtoken': emtoken,
