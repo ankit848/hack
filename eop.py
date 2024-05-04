@@ -24,6 +24,7 @@ def submit_form(emtoken, user_email, user_name, user_pass, user_conpass, terms_c
     }
     response = requests.post(url, data=data, headers=headers)
     print(data['user_name'])
+    print("Response Content:", response.content.decode("utf-8"))
     print(response.url)
     if 'https://earnzop.com/dashboard/' in response.url:
         print("Form submitted successfully.")
