@@ -6,12 +6,12 @@ def generate_random_numbers():
     return ''.join(str(random.randint(0, 9)) for _ in range(3))
 
 # Function to submit form data
-def submit_form(emtoken, user_email, user_pass, user_conpass, terms_check, user_ref):
+def submit_form(emtoken, user_email, user_name, user_pass, user_conpass, terms_check, user_ref):
     url = 'https://earnzop.com/register/'
 
     data = {
         'emtoken': emtoken,
-        'user_name': generate_random_numbers(),  # Generate a random username
+        'user_name': user_name,  # Generate a random username
         'user_email': user_email,
         'user_pass': user_pass,
         'user_conpass': user_conpass,
@@ -34,12 +34,13 @@ def submit_form(emtoken, user_email, user_pass, user_conpass, terms_check, user_
 def main():
     for _ in range(2):
         emtoken = 'e5b431e58da1f00b8fe8b04c60f73f1d7a36d28d61b1d8c974ebcb50d56ac02d'
-        user_email = 'example@example.com'  # Provide a valid email here
         user_pass = 'hacker@1234a55'
         user_conpass = 'hacker@1234a55'
         terms_check = 'on'  # Define terms_check within the main function
         user_ref = 'AB1BB'
-        submit_form(emtoken, user_email, user_pass, user_conpass, terms_check, user_ref)
+        user_name = f'hackings12{generate_random_numbers()}'
+        user_email = f'dinesh{generate_random_numbers()}p{generate_random_numbers()}@gmail.com'
+        submit_form(emtoken, user_email, user_name, user_pass, user_conpass, terms_check, user_ref)
 
 # Execute main function if the script is run directly
 if __name__ == "__main__":
