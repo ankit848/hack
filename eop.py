@@ -47,6 +47,7 @@ def submit_form(emtoken, session, user_email, user_pass, user_conpass, terms_che
         if 'https://earnzop.com/dashboard/' in response.url:
             print(f"Form submitted successfully for {user_name}.")
         else:
+            print(response.url)
             print(f"Form submission failed for {user_name}.")
     except Exception as e:
         print(f"An error occurred for {user_name}: {e}")
