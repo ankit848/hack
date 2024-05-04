@@ -1,13 +1,16 @@
 import requests
 import random
+from bs4 import BeautifulSoup
 
 # Function to generate random numbers
 def generate_random_numbers():
     return ''.join(str(random.randint(0, 9)) for _ in range(3))
 
 # Function to submit form data
-def submit_form(emtoken, user_email, user_name, user_pass, user_conpass, terms_check, user_ref):
-    url = 'https://earnzop.com/em-apc/u/R92t3R'
+def submit_form(url, user_email, user_name, user_pass, user_conpass, terms_check, user_ref):
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, 'html.parser')
+    emtoken = soup.find('input', {'name': 'emtoken'}).get('value')
 
     data = {
         'emtoken': emtoken,
@@ -34,14 +37,14 @@ def submit_form(emtoken, user_email, user_name, user_pass, user_conpass, terms_c
 # Main function
 def main():
     for _ in range(2):
-        emtoken = 'e5b431e58da1f00b8fe8b04c60f73f1d7a36d28d61b1d8c974ebcb50d56ac02d'
+        url = 'https://earnzop.com/em-apc/u/R92t3R'
         user_pass = 'hacker@1234a55'
         user_conpass = 'hacker@1234a55'
         terms_check = 'on'  # Define terms_check within the main function
         user_ref = 'AB1BB'
         user_name = f'hackings12{generate_random_numbers()}'
         user_email = f'dinesh{generate_random_numbers()}p{generate_random_numbers()}@gmail.com'
-        submit_form(emtoken, user_email, user_name, user_pass, user_conpass, terms_check, user_ref)
+        submit_form(url, user_email, user_name, user_pass, user_conpass, terms_check, user_ref)
 
 # Execute main function if the script is run directly
 if __name__ == "__main__":
