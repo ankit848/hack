@@ -1,4 +1,5 @@
-import requests
+import asyncio
+import aiohttp
 import random
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
@@ -8,20 +9,20 @@ def generate_random_numbers():
     return ''.join(str(random.randint(0, 9)) for _ in range(3))
 
 # Function to get token from server
-def get_token(session, headers):
+async def get_token(session, headers):
     url = 'https://saralshikshya.com.np/register'
     try:
-        response = session.get(url, headers=headers)
-        response.raise_for_status()  # Raise an exception for non-2xx status codes
-        soup = BeautifulSoup(response.content, 'html.parser')
-        token = soup.find('input', {'name': '_token'}).get('value')
-        return token
-    except requests.exceptions.RequestException as e:
+        async with session.get(url, headers=headers) as response:
+            response.raise_for_status()
+            soup = BeautifulSoup(await response.text(), 'html.parser')
+            token = soup.find('input', {'name': '_token'}).get('value')
+            return token
+    except aiohttp.ClientError as e:
         print(f"Failed to get token: {e}")
         return None
 
 # Function to submit form
-def submit_form(_token, session, _method, name, email, password, password_confirmation, headers):
+async def submit_form(_token, session, _method, name, email, password, password_confirmation, headers):
     url = 'https://saralshikshya.com.np/register'
     data = {
         '_token': _token,
@@ -32,27 +33,28 @@ def submit_form(_token, session, _method, name, email, password, password_confir
         'confirm_password': password_confirmation,
     }
     try:
-        response = session.post(url, data=data, headers=headers)
-        if 'https://saralshikshya.com.np/myprofile' in response.url:
-            print("Form submitted successfully.")
-        else:
-            print("Form submission failed.")
-    except Exception as e:
+        async with session.post(url, data=data, headers=headers) as response:
+            if 'https://saralshikshya.com.np/myprofile' in str(response.url):
+                print("Form submitted successfully.")
+            else:
+                print("Form submission failed.")
+    except aiohttp.ClientError as e:
         print("An error occurred:", e)
 
-def main():
+async def main():
     ua = UserAgent()
-    
-    # Generate 1000 random user agents
     user_agents = [ua.random for _ in range(1000)]
     
-    with requests.Session() as session:
-        headers = {"User-Agent": random.choice(user_agents)}
-        for _ in range(5):  # Loop 1000 times
+    tasks = []
+    async with aiohttp.ClientSession() as session:
+        for _ in range(5):
             email = f'itsmehacker{generate_random_numbers()}@gmail.com'
-            _token = get_token(session, headers)
+            headers = {"User-Agent": random.choice(user_agents)}
+            _token = await get_token(session, headers)
             if _token:
-                submit_form(_token, session, 'post', 'Hacked Haha', email, 'its_hack@123450', 'its_hack@123450', headers)
+                task = submit_form(_token, session, 'post', 'Hacked Haha', email, 'its_hack@123450', 'its_hack@123450', headers)
+                tasks.append(task)
+        await asyncio.gather(*tasks)
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
