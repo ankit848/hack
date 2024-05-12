@@ -7,6 +7,16 @@ from fake_useragent import UserAgent
 def generate_random_numbers():
     return ''.join(str(random.randint(0, 9)) for _ in range(3))
 
+# Function to visit the invite URL
+def visit_invite_url(session, headers, referred_code):
+    url = f'https://saralshikshya.com.np/invite/{referred_code}'
+    try:
+        response = session.get(url, headers=headers)
+        response.raise_for_status()  # Raise an exception for non-2xx status codes
+        print("Visited invite URL successfully.")
+    except requests.exceptions.RequestException as e:
+        print(f"Failed to visit invite URL: {e}")
+
 # Function to get token and payloads from server
 def get_token_and_payloads(session, headers):
     url = 'https://saralshikshya.com.np/register'
@@ -55,11 +65,19 @@ def main():
     
     with requests.Session() as session:
         headers = {"User-Agent": random.choice(user_agents)}
-        for _ in range(2):  # Loop 5 times for testing, you can increase this number
-            email = f'namastesaral{generate_random_numbers()}@gmail.com'
-            _token, payloads = get_token_and_payloads(session, headers)
-            if _token and payloads:
-                submit_form(_token, session, 'post', 'Namaste Haha', email, 'its_hack@123450', 'its_hack@123450', '655893', payloads, headers)
+        referred_code = '655893'
+        
+        # Visit invite URL first
+        visit_invite_url(session, headers, referred_code)
+        
+        # Get token and payloads after visiting invite URL
+        _token, payloads = get_token_and_payloads(session, headers)
+        
+        # Proceed with form submission if token and payloads are obtained
+        if _token and payloads:
+            for _ in range(2):  # Loop 5 times for testing, you can increase this number
+                email = f'namastesaral{generate_random_numbers()}@gmail.com'
+                submit_form(_token, session, 'post', 'Namaste Haha', email, 'its_hack@123450', 'its_hack@123450', referred_code, payloads, headers)
 
 if __name__ == "__main__":
     main()
