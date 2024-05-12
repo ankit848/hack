@@ -42,22 +42,6 @@ def send_request(url, proxy):
     except requests.exceptions.RequestException as e:
         print(f"\033[0mAn error occurred while sending request to \033[0;31m{url}\033[0m: {e}")
 
-def get_proxies(proxy_url):
-    try:
-        # Fetch proxy list from the URL
-        response = requests.get(proxy_url)
-        
-        # Check if request was successful
-        if response.status_code == 200:
-            # Split the response text into lines and return the list of proxies
-            return response.text.strip().split("\n")
-        else:
-            print("Failed to fetch proxy list.")
-            return []
-    except requests.exceptions.RequestException as e:
-        print(f"An error occurred while fetching proxy list: {e}")
-        return []
-
 def main():
     show()
     try:
@@ -70,15 +54,27 @@ def main():
         # Maximum number of workers
         max_workers = int(input("\033[94mEnter number of workers: "))
         
-        # Define proxy URL
-        proxy_url = "https://raw.githubusercontent.com/Ramxantanha/data/main/proxies.txt"
-        
-        # Fetch proxies from the URL
-        proxies = get_proxies(proxy_url)
-        
-        if not proxies:
-            print("No proxies available. Exiting.")
-            return
+        # List of proxies
+        proxies = [
+            "5.53.200.33:3128",
+            "155.61.23.119:3128",
+            "167.175.50.84:80",
+            "165.225.52.25:80",
+            "19.26.163.145:8081",
+            "245.135.58.63:3128",
+            "180.32.120.63:80",
+            "160.105.47.210:8081",
+            "246.153.175.188:3128",
+            "87.9.119.10:8081",
+            "241.7.104.160:8080",
+            "58.206.223.144:80",
+            "255.50.209.54:8080",
+            "179.37.162.18:8080",
+            "17.205.233.89:8081",
+            "82.235.43.117:8080",
+            "175.173.189.65:8081",
+            "246.76.204.52:80"
+        ]
         
         # Token bucket algorithm
         token_bucket = [time.time()] * max_workers
@@ -97,8 +93,8 @@ def main():
                     time.sleep(0.1)
                 
                 # Choose a random proxy from the list
-                proxy = random.choice(proxies)
-                executor.submit(send_request, url, {"https": proxy})
+                proxy = {"https": random.choice(proxies)}
+                executor.submit(send_request, url, proxy)
         
         # Print the total number of successful requests
         print(f"\033[0;33mTotal successful requests: {success_counter}\033[0m")
