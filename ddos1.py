@@ -90,7 +90,7 @@ def main():
                 # Wait for a token to be available in the token bucket
                 while True:
                     current_time = time.time()
-                    if current_time - token_bucket[0] >= 1:
+                    if current_time - token_bucket[0] >= 2:  # Limiting to 2 seconds
                         token_bucket.pop(0)
                         token_bucket.append(current_time)
                         break
