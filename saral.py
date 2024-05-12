@@ -29,7 +29,7 @@ def submit_form(_token, session, _method, name, email, password, password_confir
         'name': name,
         'email': email,
         'password': password,
-        'referred_code':referred_code,
+        'referred_code': referred_code,
         'confirm_password': password_confirmation,
     }
     try:
@@ -37,6 +37,7 @@ def submit_form(_token, session, _method, name, email, password, password_confir
         if 'https://saralshikshya.com.np/myprofile' in response.url:
             print("Form submitted successfully.")
             print(email)
+            print(referred_code)
         else:
             print("Form submission failed.")
     except Exception as e:
