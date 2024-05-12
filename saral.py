@@ -35,6 +35,7 @@ async def submit_form(_token, session, _method, name, email, password, password_
     try:
         async with session.post(url, data=data, headers=headers) as response:
             if 'https://saralshikshya.com.np/myprofile' in str(response.url):
+                print(email)
                 print("Form submitted successfully.")
             else:
                 print("Form submission failed.")
