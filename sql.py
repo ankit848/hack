@@ -47,6 +47,7 @@ def submit_form(_token, session, email, password, remember, payloads, headers):
             print("Email:", email)
         else:
             print("Login failed.")
+            print("Response content:", response.content)
     except Exception as e:
         print("An error occurred:", e)
 
