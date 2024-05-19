@@ -35,7 +35,7 @@ def visit_refer_url(session, headers):
 
 # Function to submit form
 def submit_form(session, headers, phone, username, password, promotion, email, country, st, sk):
-    url = 'https://api.datebtc.com/uc/register/phoneEmail'
+    url = 'https://datebtc.com/uc/register/phoneEmail'
     data = {
         'phone': phone,
         'username': username,
@@ -55,14 +55,16 @@ def submit_form(session, headers, phone, username, password, promotion, email, c
         response_content = response.content.decode('utf-8')
         print(f"Response URL: {response_url}")
         print(f"Response Content: {response_content}")
-        if response_url == 'https://datebtc.com/#/':
+        if response.status_code == 200 and 'some_success_indicator' in response_content:
             print("Form submitted successfully.")
             print("Username:", username)
             print("Email:", email)
         else:
-            print("Form submission failed. Response URL did not match expected URL.")
-    except Exception as e:
-        print("An error occurred:", e)
+            print("Form submission failed.")
+            print("Response Status Code:", response.status_code)
+            print("Response Content:", response_content)
+    except requests.exceptions.RequestException as e:
+        print(f"Form submission failed with exception: {e}")
 
 def main():
     ua = UserAgent()
