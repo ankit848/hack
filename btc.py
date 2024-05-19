@@ -25,7 +25,7 @@ def generate_sk():
 
 # Function to visit the refer URL
 def visit_refer_url(session, headers):
-    url = 'https://datebtc.com/#/reg?code=BQA8O'
+    url = 'https://datebtc.com/#/reg?code=C5XGM'
     try:
         response = session.get(url, headers=headers)
         response.raise_for_status()  # Raise an exception for non-2xx status codes
@@ -98,7 +98,7 @@ def main():
     user_agents = [ua.random for _ in range(1000)]
 
     # List of names
-    names = ["Ram Yadav", "Krishna Kandel", "Jilab Paudel", "Emily Brown", "Shanta Aryal", "Monika Gurung", "Robert Taylor", "Olivia Martinez", "James Anderson", "Emma Thomas", "Magar gurue", "Seeya Mahato", "Matthew Clark", "Prital Thanet", "Daniel Lewis", "Chloe Hall", "Christopher Hill", "Mia Allen", "Joseph Scott", "Ella Green"]
+    names = ["Ram Yadav", "Krishna Kandel", "Jilab Paudel", "Emily Brown", "Shanta Aryal", "Monika Gurung", "Robert Taylor", "Olivia Martinez", "James Anderson", "Emma Thomas", "Magar Gurue", "Seeya Mahato", "Matthew Clark", "Prital Thanet", "Daniel Lewis", "Chloe Hall", "Christopher Hill", "Mia Allen", "Joseph Scott", "Ella Green"]
 
     with requests.Session() as session:
         headers = {"User-Agent": random.choice(user_agents)}
@@ -113,12 +113,12 @@ def main():
             phone = generate_random_numbers()
             email = f'{username}@gmail.com'
             password = 'asasas'
-            promotion = 'BQA8O'
+            promotion = 'C5XGM'
             country = '尼泊尔'
             st = generate_st()
             sk = generate_sk()
 
             submit_form(session, headers, phone, username, password, promotion, email, country, st, sk)
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
