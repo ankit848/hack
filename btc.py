@@ -51,12 +51,16 @@ def submit_form(session, headers, phone, username, password, promotion, email, c
     }
     try:
         response = session.post(url, data=data, headers=headers)
-        if response.status_code == 200:
+        response_url = response.url
+        response_content = response.content.decode('utf-8')
+        print(f"Response URL: {response_url}")
+        print(f"Response Content: {response_content}")
+        if response_url == 'https://datebtc.com/#/':
             print("Form submitted successfully.")
             print("Username:", username)
             print("Email:", email)
         else:
-            print("Form submission failed with status code:", response.status_code)
+            print("Form submission failed. Response URL did not match expected URL.")
     except Exception as e:
         print("An error occurred:", e)
 
@@ -76,7 +80,7 @@ def main():
         visit_refer_url(session, headers)
         
         # Proceed with form submission
-        for _ in range(2):  # Loop 1000 times for testing, you can increase this number
+        for _ in range(2):  # Loop 2 times for testing, you can increase this number
             name = random.choice(names)
             username = generate_random_username()
             phone = generate_random_numbers()
