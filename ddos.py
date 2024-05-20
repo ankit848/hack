@@ -31,7 +31,7 @@ def send_request(url):
         headers = {"User-Agent": user_agent}
         
         # Send GET request with the specified User-Agent
-        response = requests.get(url, headers=headers, verify=False)
+        response = requests.get(url, headers=headers)
         
         # Check if the request was successful (status code 200)
         if response.status_code == 200:
